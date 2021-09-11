@@ -4,13 +4,16 @@ import PureComponents from "../components/PureComponents/PureComponents";
 import ComponentR from "../components/Component/ComponentR";
 import ElementCr from "../components/CreateElement/ElementCr";
 
-export const Main = () => {
+export const Main = ({ darkMode, setDarkMode }) => {
   const [counter, setCounter] = useState(0);
-  const [toggleOn, setToggleOn] = useState(true);
+  const [searchResult, setSearchResult] = useState("");
   return (
     <>
-      <ComponentR />
-      <ArrowComponent toggleOn={toggleOn} setToggleOn={setToggleOn} />
+      <ComponentR
+        searchResult={searchResult}
+        setSearchResult={setSearchResult}
+      />
+      <ArrowComponent darkMode={darkMode} setDarkMode={setDarkMode} />
       <PureComponents counter={counter} setCounter={setCounter} />
       <ElementCr />
     </>
