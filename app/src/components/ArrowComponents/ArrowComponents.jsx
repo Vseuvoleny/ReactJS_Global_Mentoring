@@ -1,13 +1,21 @@
 import React from "react";
+import "./ArrowComponents.scss";
 
 export const ArrowComponents = ({ darkMode, setDarkMode }) => {
   return (
-    <div>
+    <div className="arrow">
       <p>Dark Mode: {darkMode ? "On" : "Off"}</p>
-
-      <label>
-        Mode Toggler
-        <input type="checkbox" onClick={() => setDarkMode(!darkMode)} />
+      <input
+        id="togler"
+        hidden
+        className="check"
+        type="checkbox"
+        onClick={() => setDarkMode(!darkMode)}
+      />
+      <label className="toggler" htmlFor="togler">
+        <div className="control">
+          <span></span>
+        </div>
       </label>
     </div>
   );

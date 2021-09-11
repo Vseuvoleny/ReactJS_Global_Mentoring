@@ -1,0 +1,18 @@
+.class-component {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .button-container,
+  .result-text {
+    margin-top: 10px;
+  }
+}
+.input-field {
+  outline: none;
+  border: 1px solid lightblue;
+  border-radius: 5px;
+  padding: 4px 0 4px 10px;
+  &::placeholder {
+    color: lightgray;
+  }
+}

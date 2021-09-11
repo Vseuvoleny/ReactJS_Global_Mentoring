@@ -1,0 +1,30 @@
+.arrow {
+  width: 180px;
+  input[type="checkbox"]:checked ~ .toggler .control span::before {
+    content: "Off";
+  }
+  input[type="checkbox"]:checked ~ .toggler .control span {
+    transform: translateX(90px);
+  }
+
+  .toggler {
+    text-align: center;
+    .control {
+      display: flex;
+      span {
+        display: inline-block;
+        width: 90px;
+        text-align: center;
+        transition: transform 1s;
+        &:before {
+          content: "On";
+        }
+
+        &:first-of-type {
+          border-radius: 5px;
+          background: cornflowerblue;
+        }
+      }
+    }
+  }
+}

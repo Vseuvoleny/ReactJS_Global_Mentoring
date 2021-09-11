@@ -1,0 +1,14 @@
+.pure {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .btn-container {
+    button {
+      width: 50px;
+    }
+    button + button {
+      margin-left: 10px;
+    }
+  }
+}

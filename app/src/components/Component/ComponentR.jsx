@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import "./ComponentR.scss";
 export default class ComponentR extends Component {
   constructor(props) {
     super(props);
@@ -12,20 +12,25 @@ export default class ComponentR extends Component {
   render() {
     const { setSearchResult } = this.props;
     return (
-      <div>
-        <div>
+      <div className="class-component">
+        <div className="input-container">
           <input
+            className="input-field"
             type="text"
             placeholder="Что хотите найти?"
             onChange={(e) => setSearchResult(e.target.value)}
           />
         </div>
-        <div>
-          <button type="submit" onClick={() => this.showResult()}>
+        <div className="button-container">
+          <button
+            className="button"
+            type="submit"
+            onClick={() => this.showResult()}
+          >
             Поиск
           </button>
         </div>
-        <p>Результат поиска: {this.state.result}</p>
+        <p className="result-text">Результат поиска: {this.state.result}</p>
       </div>
     );
   }

@@ -5,7 +5,7 @@ export default class ElementCr extends Component {
     return React.createElement(
       "div",
       null,
-      "Hello, Im component created by React.CreateElement"
+      "Hello, I'm component created by React.CreateElement"
     );
   }
 }
