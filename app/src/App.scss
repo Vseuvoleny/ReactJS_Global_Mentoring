@@ -1,33 +1,15 @@
 * {
   box-sizing: border-box;
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
+
+li {
+  list-style: none;
+}
+
 .App {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  align-items: center;
+  margin: 0 auto;
   padding-top: 40px;
-  font-size: 24px;
-  div + div {
-    margin-top: 20px;
-  }
-}
-
-.dark {
-  color: #fff;
-  background: #333;
-}
-
-.button {
-  padding: 8px;
-  outline: none;
-  border: 0;
-  border-radius: 5px;
-  background: lightblue;
-  cursor: pointer;
-  &:active {
-    transform: translateY(5px);
-  }
+  width: 80%;
 }

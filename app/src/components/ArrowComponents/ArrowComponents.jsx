@@ -1,22 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ArrowComponents.scss";
 
-export const ArrowComponents = ({ darkMode, setDarkMode }) => {
+const films = [
+  { title: "All", id: 1 },
+  { title: "Documentary", id: 2 },
+  { title: "Comedy", id: 3 },
+  { title: "Horror", id: 4 },
+  { title: "crime", id: 5 },
+];
+
+const ArrowComponents = () => {
+  const [activeFilm, setActiveFilm] = useState(1);
+
   return (
-    <div className="arrow">
-      <p>Dark Mode: {darkMode ? "On" : "Off"}</p>
-      <input
-        id="togler"
-        hidden
-        className="check"
-        type="checkbox"
-        onClick={() => setDarkMode(!darkMode)}
-      />
-      <label className="toggler" htmlFor="togler">
-        <div className="control">
-          <span></span>
-        </div>
-      </label>
+    <div className="films-category">
+      <ul className="films-category__films">
+        {films.map((f) => (
+          <li
+            key={f.id}
+            className={`film ${activeFilm === f.id ? "active" : ""}`}
+            onClick={() => setActiveFilm(f.id)}
+          >
+            {f.title}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

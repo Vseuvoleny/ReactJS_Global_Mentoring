@@ -9,13 +9,13 @@ export const Main = ({ darkMode, setDarkMode }) => {
   const [searchResult, setSearchResult] = useState("");
   return (
     <>
+      <ElementCr />
       <ComponentR
         searchResult={searchResult}
         setSearchResult={setSearchResult}
       />
-      <ArrowComponent darkMode={darkMode} setDarkMode={setDarkMode} />
+      <ArrowComponent />
       <PureComponents counter={counter} setCounter={setCounter} />
-      <ElementCr />
     </>
   );
 };
