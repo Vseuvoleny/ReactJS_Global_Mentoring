@@ -3,34 +3,48 @@ import "./ComponentR.scss";
 export default class ComponentR extends Component {
   constructor(props) {
     super(props);
-    this.state = { result: "" };
+    this.state = { filmName: "", reqFilms: undefined };
   }
-  showResult() {
-    this.setState({ result: this.props.searchResult });
+  async showFilms() {
+    const URL = `http://localhost:4000/movies?sortOrder=desc&search=${this.state.filmName}&searchBy=title&limit=10`;
+    const res = await fetch(URL);
+    const data = await res.json();
+    await this.setState({ reqFilms: data.data });
   }
 
   render() {
-    const { setSearchResult } = this.props;
     return (
-      <div className="class-component">
-        <div className="input-container">
-          <input
-            className="input-field"
-            type="text"
-            placeholder="Что хотите найти?"
-            onChange={(e) => setSearchResult(e.target.value)}
-          />
+      <div className="search-bar">
+        <h2 className="search-bar__title">find your movie</h2>
+        <div className="search-bar__search-container">
+          <div className="search-bar__input">
+            <input
+              className="input-field"
+              type="text"
+              placeholder="What do you want to watch?"
+              onChange={(e) => {
+                const value = e.target.value;
+                this.setState({ filmName: value });
+              }}
+            />
+          </div>
+          <div className="search-bar__btn">
+            <button
+              className="button"
+              type="submit"
+              onClick={() => this.showFilms()}
+            >
+              Search
+            </button>
+          </div>
         </div>
-        <div className="button-container">
-          <button
-            className="button"
-            type="submit"
-            onClick={() => this.showResult()}
-          >
-            Поиск
-          </button>
-        </div>
-        <p className="result-text">Результат поиска: {this.state.result}</p>
+        {this.state.reqFilms && (
+          <ul>
+            {this.state.reqFilms.map((f) => (
+              <li>{f.title}</li>
+            ))}
+          </ul>
+        )}
       </div>
     );
   }
