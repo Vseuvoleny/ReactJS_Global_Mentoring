@@ -1,5 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
   entry: "./src/index.js",
@@ -7,20 +8,29 @@ module.exports = {
     path: path.join(__dirname, "dist"),
     filename: "index.bundle.js",
   },
+  devServer: {
+    port: 3050,
+  },
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
         },
       },
+      {
+        test: /\.(css|scss)$/i,
+        use: ["style-loader", "css-loader", "sass-loader"],
+      },
+      { test: /\.(jpg|jpeg|png|svg)/, use: ["file-loader"] },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/index.html",
     }),
+    new CleanWebpackPlugin(),
   ],
 };
