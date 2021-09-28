@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Button from "../../Elements/Button/Button";
 import "./SearchBar.scss";
 
 export default class SearchBar extends Component {
@@ -29,15 +30,12 @@ export default class SearchBar extends Component {
               }}
             />
           </div>
-          <div className="search-bar__btn">
-            <button
-              className="button"
-              type="submit"
-              onClick={() => this.showFilms()}
-            >
-              Search
-            </button>
-          </div>
+          <Button
+            className={"search-bar"}
+            type={"submit"}
+            clickHandler={() => this.showFilms()}
+            text={"Search"}
+          />
         </div>
         {this.state.reqFilms && (
           <ul>

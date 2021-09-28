@@ -29,4 +29,4 @@ const Nav = () => {
   );
 };
 
-export default ArrowComponents;
+export default Nav;
