@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./ArrowComponents.scss";
+import "./Nav.scss";
 
 const films = [
   { title: "All", id: 1 },
@@ -9,7 +9,7 @@ const films = [
   { title: "crime", id: 5 },
 ];
 
-const ArrowComponents = () => {
+const Nav = () => {
   const [activeFilm, setActiveFilm] = useState(1);
 
   return (

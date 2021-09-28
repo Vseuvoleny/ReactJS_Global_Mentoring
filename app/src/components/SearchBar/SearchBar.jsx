@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import "./ComponentR.scss";
-export default class ComponentR extends Component {
+import "./SearchBar.scss";
+
+export default class SearchBar extends Component {
   constructor(props) {
     super(props);
     this.state = { filmName: "", reqFilms: undefined };
