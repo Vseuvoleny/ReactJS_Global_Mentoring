@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
+import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
+import Header from "./containers/Header/Header";
 import Main from "./containers/Main/Main";
 import "./App.scss";
-import Header from "./containers/Header/Header";
 
 const App = () => {
   return (
-    <div className="App">
+    <ErrorBoundary>
       <Header />
       <Main />
-    </div>
+    </ErrorBoundary>
   );
 };
 
