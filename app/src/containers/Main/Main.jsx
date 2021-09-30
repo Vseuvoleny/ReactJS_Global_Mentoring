@@ -6,10 +6,10 @@ import bohemian from "../../assets/images/bohemian_phapsody.png";
 import kill_bill from "../../assets/images/kill_bill.png";
 import inception from "../../assets/images/inception.png";
 import dogs from "../../assets/images/dogs.png";
-import RedTriangle from "../../assets/svg/redTriange.svg";
+import RedTriangle from "../../Elements/Icon/Icons/redTriangle/RedTriange";
 import "./Main.scss";
 import MovieList from "../../components/MovieList/MovieList";
-import Svg from "../../Elements/Svg/Svg";
+import Icon from "../../Elements/Icon/Icon";
 
 const films = [
   {
@@ -66,9 +66,7 @@ const Main = () => {
           <span className="filter__status">sort by</span>
           <span className="filter__options">
             release date{" "}
-            {/* <Svg>
-              <RedTriangle />
-            </Svg> */}
+            <RedTriangle viewBox="0 0 10 7" width="10" height="7" fill="none" />
           </span>
         </div>
       </div>
