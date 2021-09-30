@@ -1,18 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
-import "./MovieCard.scss";
+import DropDawn from "../../../Elements/DropDawn/DropDawn";
 import Ovals from "../../../Elements/Icon/Icons/Ovals/Ovals";
+import CardControler from "../CardContoler/CardControler";
+import "./MovieCard.scss";
 
 const MovieCard = ({ image, name, date, type }) => {
+  const [isDropDawnOpen, setDropDawnOpen] = useState(false);
   return (
     <div className="card__item">
       <picture className="card__image">
-        <Ovals
-          width="44"
-          height="44"
-          viewBox="0 0 44 44"
-          fill="none"
-          classes={"card__image-icon"}
+        <CardControler
+          isDropDawnOpen={isDropDawnOpen}
+          setDropDawnOpen={setDropDawnOpen}
         />
         <img src={image} alt={name} />
       </picture>

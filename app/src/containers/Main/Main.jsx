@@ -1,5 +1,5 @@
 import React from "react";
-import Nav from "../../components/Nav/Nav";
+import Nav from "../../Components/Nav/Nav";
 import pulp_fiction from "../../assets/images/pulp_fiction.png";
 import avengers from "../../assets/images/avengers.png";
 import bohemian from "../../assets/images/bohemian_phapsody.png";
@@ -8,7 +8,7 @@ import inception from "../../assets/images/inception.png";
 import dogs from "../../assets/images/dogs.png";
 import RedTriangle from "../../Elements/Icon/Icons/redTriangle/RedTriange";
 import "./Main.scss";
-import MovieList from "../../components/MovieList/MovieList";
+import MovieList from "../../Components/MovieList/MovieList";
 import Icon from "../../Elements/Icon/Icon";
 
 const films = [

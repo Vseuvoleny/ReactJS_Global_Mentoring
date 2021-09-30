@@ -1,5 +1,5 @@
 import React from "react";
-import SearchBar from "../../components/SearchBar/SearchBar";
+import SearchBar from "../../Components/SearchBar/SearchBar";
 import Button from "../../Elements/Button/Button";
 import Title from "../../Elements/Title/Title";
 import "./Header.scss";
