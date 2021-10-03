@@ -7,6 +7,6 @@ export const modalReducer = (state, action) => {
     case "delete":
       return { modal: (state.modal = "delete") };
     default:
-      return { modal: "" };
+      return { modal: (state.modal = "") };
   }
 };

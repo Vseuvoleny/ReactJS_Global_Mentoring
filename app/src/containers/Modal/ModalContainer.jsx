@@ -1,10 +1,11 @@
 import React from "react";
+import PropTypes from "prop-types";
 import ApplyModal from "../../Components/ApplyModal/ApplyModal";
 import EditModal from "../../Components/EditModal/EditModal";
 import DeleteModal from "../../Components/DeleteModal/DeleteModal";
-import PropTypes from "prop-types";
+import "./ModalContainer.scss";
 
-const ModalContainer = ({ state }) => {
+const ModalContainer = ({ state, dispatch }) => {
   const defineModal = ({ modal }) => {
     switch (modal) {
       case "apply":
@@ -22,7 +23,10 @@ const ModalContainer = ({ state }) => {
     <div className="modal">
       <div className="modal__overlay"></div>
       <div className="modal__container">
-        <span>&#10060;</span>
+        <span className="close_icon" onClick={() => dispatch({ type: "" })}>
+          &#x2715;
+        </span>
+
         {defineModal(state)}
       </div>
     </div>

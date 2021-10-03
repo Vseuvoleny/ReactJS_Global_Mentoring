@@ -17,9 +17,9 @@ const App = () => {
       <Header dispatch={dispatch} />
       <Main dispatch={dispatch} />
       <Footer />
-      {state &&
+      {state.modal &&
         createPortal(
-          <ModalContainer state={state} />,
+          <ModalContainer state={state} dispatch={dispatch} />,
           document.getElementById("root")
         )}
     </ErrorBoundary>

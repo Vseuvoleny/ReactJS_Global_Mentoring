@@ -1,44 +1,39 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Button from "../../Elements/Button/Button";
+import Input from "../../Elements/Input/Input";
+import Select from "../../Elements/Select/Select";
+import "./MovieForm.scss";
 
 const MovieForm = ({ applyMode = true }) => {
   return (
     <form className="form-container">
-      <label>
-        title
-        <input type="text" />
-      </label>
-      <label>
-        release date
-        <input type="date" />
-      </label>
-      <label>
-        movie url
-        <input type="text" />
-      </label>
-      <label>
-        rating
-        <input type="text" />
-      </label>
-      <label>
-        genre
-        <select>
-          <option value=""></option>
-          <option value=""></option>
-          <option value=""></option>
-          <option value=""></option>
-        </select>
-      </label>
-      <label>
-        runtime
-        <input type="text" />
-      </label>
-      <label>
-        overview
-        <textarea></textarea>
-      </label>
+      <div className="form-container__inputs">
+        <div className="right">
+          <Input title={"title"} placeholder="Title" />
+          <Input title={"movie url"} />
+          {/* <div className="select-input">
+            <span className="label">genre</span>
+            <div className="select-input__box">
+              Select Genre <span className="expanded-icon">X</span>
+            </div>
+          </div> */}
+          <Select placeholder={"Select genre"} />
+        </div>
+        <div className="left">
+          <Input title={"release date"} type="date" />
+
+          <Input title={"rating"} />
+
+          <Input title={"runtime"} />
+        </div>
+      </div>
+
       <div>
+        <label html="overview">overview</label>
+        <textarea id="overview"></textarea>
+      </div>
+      <div className="buttons">
         <Button
           className="submit-form"
           type="submit"

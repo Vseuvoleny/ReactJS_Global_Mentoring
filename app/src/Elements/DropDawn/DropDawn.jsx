@@ -2,7 +2,6 @@ import React, { useRef, useEffect } from "react";
 import CloseIcon from "../Icon/Icons/CloseIcon/CloseIcon";
 import PropTypes from "prop-types";
 import "./DropDawn.scss";
-
 const DropDawn = ({ setDropDawnOpen, dispatch }) => {
   const ref = useRef(null);
   const svgRef = useRef(null);
@@ -55,7 +54,7 @@ const DropDawn = ({ setDropDawnOpen, dispatch }) => {
 
 DropDawn.propTypes = {
   setDropDawnOpen: PropTypes.func,
-  setModalActive: PropTypes.func,
+  dispatch: PropTypes.func,
 };
 
 export default DropDawn;
