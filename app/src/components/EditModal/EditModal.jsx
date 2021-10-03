@@ -1,12 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Button from "../../Elements/Button/Button";
+import MovieForm from "../MovieForm/MovieForm";
+import "./EditModal.scss";
 
 const EditModal = () => {
   return (
     <section className="edit-modal">
-      <span>EDIT MOVIE</span>
-      <form></form>
+      <span className="edit-modal__title">edit movie</span>
+      <MovieForm />
     </section>
   );
 };

@@ -4,6 +4,7 @@ import Button from "../../Elements/Button/Button";
 import Input from "../../Elements/Input/Input";
 import Select from "../../Elements/Select/Select";
 import "./MovieForm.scss";
+import TextArea from "../../Elements/TextArea/TextArea";
 
 const MovieForm = ({ applyMode = true }) => {
   return (
@@ -11,28 +12,25 @@ const MovieForm = ({ applyMode = true }) => {
       <div className="form-container__inputs">
         <div className="right">
           <Input title={"title"} placeholder="Title" />
-          <Input title={"movie url"} />
+          <Input title={"movie url"} placeholder="https://" />
           {/* <div className="select-input">
             <span className="label">genre</span>
             <div className="select-input__box">
               Select Genre <span className="expanded-icon">X</span>
             </div>
           </div> */}
-          <Select placeholder={"Select genre"} />
+          <Select placeholder={"Select genre"} label={"genre"} />
         </div>
         <div className="left">
           <Input title={"release date"} type="date" />
 
-          <Input title={"rating"} />
+          <Input title={"rating"} placeholder="7.8" />
 
-          <Input title={"runtime"} />
+          <Input title={"runtime"} placeholder="minutes" />
         </div>
       </div>
 
-      <div>
-        <label html="overview">overview</label>
-        <textarea id="overview"></textarea>
-      </div>
+      <TextArea title={"overview"} />
       <div className="buttons">
         <Button
           className="submit-form"

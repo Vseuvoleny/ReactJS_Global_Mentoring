@@ -7,7 +7,7 @@ import bohemian from "../../assets/images/bohemian_phapsody.png";
 import kill_bill from "../../assets/images/kill_bill.png";
 import inception from "../../assets/images/inception.png";
 import dogs from "../../assets/images/dogs.png";
-import RedTriangle from "../../Elements/Icon/Icons/redTriangle/RedTriange";
+import RedTriangle from "../../Elements/Icon/Icons/RedTriangle/RedTriangle";
 import MovieList from "../../Components/MovieList/MovieList";
 import "./Main.scss";
 
