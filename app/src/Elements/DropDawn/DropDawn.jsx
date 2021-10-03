@@ -3,9 +3,10 @@ import CloseIcon from "../Icon/Icons/CloseIcon/CloseIcon";
 import PropTypes from "prop-types";
 import "./DropDawn.scss";
 
-const DropDawn = ({ setDropDawnOpen }) => {
+const DropDawn = ({ setDropDawnOpen, dispatch }) => {
   const ref = useRef(null);
   const svgRef = useRef(null);
+
   const outSideClick = (e) => {
     if (
       ref.current &&
@@ -32,14 +33,29 @@ const DropDawn = ({ setDropDawnOpen }) => {
         onClick={outSideClick}
         ref={svgRef}
       />
-      <div className="control">Edit</div>
-      <div className="control">Delete</div>
+      <div
+        className="control"
+        onClick={() => {
+          dispatch({ type: "edit" });
+        }}
+      >
+        Edit
+      </div>
+      <div
+        className="control"
+        onClick={() => {
+          dispatch({ type: "delete" });
+        }}
+      >
+        Delete
+      </div>
     </div>
   );
 };
 
 DropDawn.propTypes = {
   setDropDawnOpen: PropTypes.func,
+  setModalActive: PropTypes.func,
 };
 
 export default DropDawn;

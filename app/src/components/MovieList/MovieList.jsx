@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import "./MovieList.scss";
 import MovieCard from "./MovieCard/MovieCard";
 
-const MovieList = ({ films }) => {
+const MovieList = ({ films, state, dispatch }) => {
   return (
     <section className="cards__container">
       <span className="cards__counter">
@@ -17,6 +17,8 @@ const MovieList = ({ films }) => {
             key={c.id}
             type={c.type}
             date={c.date}
+            dispatch={dispatch}
+            state={state}
           />
         ))}
       </div>
@@ -32,6 +34,8 @@ MovieList.propTypes = {
     type: PropTypes.string,
     id: PropTypes.number,
   }),
+  dispatch: PropTypes.func,
+  state: PropTypes.string,
 };
 
 export default MovieList;

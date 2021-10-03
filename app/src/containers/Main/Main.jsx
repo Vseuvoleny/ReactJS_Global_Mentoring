@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Nav from "../../Components/Nav/Nav";
 import pulp_fiction from "../../assets/images/pulp_fiction.png";
 import avengers from "../../assets/images/avengers.png";
@@ -7,9 +8,8 @@ import kill_bill from "../../assets/images/kill_bill.png";
 import inception from "../../assets/images/inception.png";
 import dogs from "../../assets/images/dogs.png";
 import RedTriangle from "../../Elements/Icon/Icons/redTriangle/RedTriange";
-import "./Main.scss";
 import MovieList from "../../Components/MovieList/MovieList";
-import Icon from "../../Elements/Icon/Icon";
+import "./Main.scss";
 
 const films = [
   {
@@ -56,7 +56,7 @@ const films = [
   },
 ];
 
-const Main = () => {
+const Main = ({ state, dispatch }) => {
   return (
     <main className="main">
       <div className="hr"></div>
@@ -70,9 +70,12 @@ const Main = () => {
           </span>
         </div>
       </div>
-      <MovieList films={films} />
+      <MovieList films={films} state={state} dispatch={dispatch} />
     </main>
   );
 };
-
+Main.propTypes = {
+  state: PropTypes.string,
+  dispatch: PropTypes.func,
+};
 export default Main;

@@ -4,7 +4,7 @@ import Button from "../../Elements/Button/Button";
 import Title from "../../Elements/Title/Title";
 import "./Header.scss";
 
-const Header = () => {
+const Header = ({ dispatch }) => {
   return (
     <header className="header">
       <div className="header__background"></div>
@@ -13,7 +13,9 @@ const Header = () => {
           <Title />
           <Button
             type={"button"}
-            clickHandler={() => {}}
+            clickHandler={() => {
+              dispatch({ type: "apply" });
+            }}
             className={"add-movie"}
             text={"+ add movie"}
           />

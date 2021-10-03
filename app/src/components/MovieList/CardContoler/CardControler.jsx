@@ -3,7 +3,7 @@ import Ovals from "../../../Elements/Icon/Icons/Ovals/Ovals";
 import PropTypes from "prop-types";
 import DropDawn from "../../../Elements/DropDawn/DropDawn";
 
-const CardControler = ({ isDropDawnOpen, setDropDawnOpen }) => {
+const CardControler = ({ isDropDawnOpen, setDropDawnOpen, dispatch }) => {
   if (!isDropDawnOpen) {
     return (
       <Ovals
@@ -16,12 +16,13 @@ const CardControler = ({ isDropDawnOpen, setDropDawnOpen }) => {
       />
     );
   }
-  return <DropDawn setDropDawnOpen={setDropDawnOpen} />;
+  return <DropDawn setDropDawnOpen={setDropDawnOpen} dispatch={dispatch} />;
 };
 
 CardControler.propTypes = {
   isDropDawnOpen: PropTypes.bool,
   setDropDawnOpen: PropTypes.func,
+  dispatch: PropTypes.func,
 };
 
 export default CardControler;
