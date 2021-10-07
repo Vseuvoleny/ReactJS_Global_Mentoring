@@ -6,6 +6,7 @@ import Title from "../../Elements/Title/Title";
 import SearchIcon from "../../Elements/Icon/Icons/SearchIcon/SearchIcon";
 import MovieDetails from "../../Components/MovieDetails/MovieDetails";
 import "./Header.scss";
+
 const Header = ({ dispatch, isMovieDetailsOpened }) => {
   return (
     <header className="header">
@@ -14,7 +15,7 @@ const Header = ({ dispatch, isMovieDetailsOpened }) => {
         <div className="header__title">
           <Title />
           {isMovieDetailsOpened ? (
-            <SearchIcon />
+            <SearchIcon width="29" height="30" viewBox="0 0 29 30" />
           ) : (
             <Button
               type={"button"}
@@ -27,7 +28,7 @@ const Header = ({ dispatch, isMovieDetailsOpened }) => {
           )}
         </div>
 
-        {isMovieDetailsOpened ? <SearchBar /> : <MovieDetails />}
+        {isMovieDetailsOpened ? <MovieDetails /> : <SearchBar />}
       </div>
     </header>
   );

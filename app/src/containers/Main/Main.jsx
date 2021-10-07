@@ -56,26 +56,38 @@ const films = [
   },
 ];
 
-const Main = ({ state, dispatch }) => {
+export const MainContext = React.createContext();
+
+const Main = ({ state, dispatch, setIsMovieDetailsOpened }) => {
   return (
-    <main className="main">
-      <div className="hr"></div>
-      <div className="filters__container">
-        <Nav />
-        <div className="filter">
-          <span className="filter__status">sort by</span>
-          <span className="filter__options">
-            release date{" "}
-            <RedTriangle viewBox="0 0 10 7" width="10" height="7" fill="none" />
-          </span>
+    <MainContext.Provider
+      value={{ setMovieListOpen: setIsMovieDetailsOpened, state, dispatch }}
+    >
+      <main className="main">
+        <div className="hr"></div>
+        <div className="filters__container">
+          <Nav />
+          <div className="filter">
+            <span className="filter__status">sort by</span>
+            <span className="filter__options">
+              release date{" "}
+              <RedTriangle
+                viewBox="0 0 10 7"
+                width="10"
+                height="7"
+                fill="none"
+              />
+            </span>
+          </div>
         </div>
-      </div>
-      <MovieList films={films} state={state} dispatch={dispatch} />
-    </main>
+        <MovieList films={films} />
+      </main>
+    </MainContext.Provider>
   );
 };
 Main.propTypes = {
   state: PropTypes.string,
   dispatch: PropTypes.func,
+  setIsMovieDetailsOpened: PropTypes.func,
 };
 export default Main;

@@ -19,7 +19,10 @@ const App = () => {
         isMovieDetailsOpened={isMovieDetailsOpened}
         setIsMovieDetailsOpened={setIsMovieDetailsOpened}
       />
-      <Main dispatch={dispatch} />
+      <Main
+        dispatch={dispatch}
+        setIsMovieDetailsOpened={setIsMovieDetailsOpened}
+      />
       <Footer />
       {state.modal &&
         createPortal(
