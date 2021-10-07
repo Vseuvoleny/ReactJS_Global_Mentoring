@@ -10,7 +10,9 @@ import "./Header.scss";
 const Header = ({ dispatch, isMovieDetailsOpened }) => {
   return (
     <header className="header">
-      <div className="header__background"></div>
+      {isMovieDetailsOpened ? undefined : (
+        <div className="header__background"></div>
+      )}
       <div className="header__container">
         <div className="header__title">
           <Title />
