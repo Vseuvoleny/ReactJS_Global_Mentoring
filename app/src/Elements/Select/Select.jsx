@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import PropTypes from "prop-types";
 import RedTriangle from "../Icon/Icons/RedTriangle/RedTriangle";
 import "./Select.scss";
+import Option from "./Option/Option";
 
 const genres = [
   { title: "Crime", id: 1 },
   { title: "Documentary", id: 2 },
   { title: "Horror", id: 3 },
-  { title: "Comedy", id: 3 },
+  { title: "Comedy", id: 4 },
 ];
 
 const Select = ({ placeholder, label }) => {
@@ -31,13 +32,17 @@ const Select = ({ placeholder, label }) => {
       {isListOpen && (
         <div className="options">
           {genres.map((g) => (
-            <div
+            <Option
               key={g.id}
-              className="option"
-              onClick={() => setOption((prev) => [g.title, ...prev])}
-            >
-              {g.title}
-            </div>
+              onClick={() =>
+                setOption(
+                  option.includes(g.title)
+                    ? option.filter((el) => el !== g.title)
+                    : (prev) => [...prev, g.title]
+                )
+              }
+              title={g.title}
+            />
           ))}
         </div>
       )}
