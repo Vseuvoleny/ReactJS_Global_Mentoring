@@ -1,8 +1,8 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import RedTriangle from "../Icon/Icons/RedTriangle/RedTriangle";
-import "./Select.scss";
 import Option from "./Option/Option";
+import "./Select.scss";
 
 const genres = [
   { title: "Crime", id: 1 },

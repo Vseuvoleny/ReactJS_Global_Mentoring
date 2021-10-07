@@ -13,19 +13,17 @@ const Nav = () => {
   const [activeFilm, setActiveFilm] = useState(1);
 
   return (
-    <div className="films-category">
-      <ul className="films-category__films">
-        {films.map((f) => (
-          <li
-            key={f.id}
-            className={`film ${activeFilm === f.id ? "active" : ""}`}
-            onClick={() => setActiveFilm(f.id)}
-          >
-            {f.title}
-          </li>
-        ))}
-      </ul>
-    </div>
+    <ul className="films-category__films">
+      {films.map((f) => (
+        <li
+          key={f.id}
+          className={`film ${activeFilm === f.id ? "active" : ""}`}
+          onClick={() => setActiveFilm(f.id)}
+        >
+          {f.title}
+        </li>
+      ))}
+    </ul>
   );
 };
 

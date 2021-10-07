@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useState } from "react";
 import { createPortal } from "react-dom";
 import ErrorBoundary from "./Components/ErrorBoundary/ErrorBoundary";
 import Header from "./Containers/Header/Header";
@@ -11,10 +11,14 @@ import "./App.scss";
 
 const App = () => {
   const [state, dispatch] = useReducer(modalReducer, initialState);
-
+  const [isMovieDetailsOpened, setIsMovieDetailsOpened] = useState(false);
   return (
     <ErrorBoundary>
-      <Header dispatch={dispatch} />
+      <Header
+        dispatch={dispatch}
+        isMovieDetailsOpened={isMovieDetailsOpened}
+        setIsMovieDetailsOpened={setIsMovieDetailsOpened}
+      />
       <Main dispatch={dispatch} />
       <Footer />
       {state.modal &&
