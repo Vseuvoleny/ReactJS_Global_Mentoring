@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import SearchBar from "../../Components/SearchBar/SearchBar";
 import Button from "../../Elements/Button/Button";
@@ -12,6 +12,14 @@ const Header = ({
   isMovieDetailsOpened,
   setIsMovieDetailsOpened,
 }) => {
+  const ref = useRef();
+
+  useEffect(() => {
+    if (isMovieDetailsOpened === null) {
+      ref.current.focus();
+    }
+  }, [isMovieDetailsOpened]);
+
   return (
     <header className="header">
       <div className="header__container">
@@ -23,7 +31,7 @@ const Header = ({
               height="30"
               viewBox="0 0 29 30"
               onClick={() => {
-                setIsMovieDetailsOpened(undefined);
+                setIsMovieDetailsOpened(null);
               }}
             />
           ) : (
@@ -38,7 +46,7 @@ const Header = ({
           )}
         </div>
 
-        {isMovieDetailsOpened ? <MovieDetails /> : <SearchBar />}
+        {isMovieDetailsOpened ? <MovieDetails /> : <SearchBar ref={ref} />}
       </div>
     </header>
   );
