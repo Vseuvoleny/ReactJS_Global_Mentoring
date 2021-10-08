@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import PropTypes from "prop-types";
 import RedTriangle from "../Icon/Icons/RedTriangle/RedTriangle";
 import Option from "./Option/Option";
@@ -14,6 +14,17 @@ const genres = [
 const Select = ({ placeholder, label }) => {
   const [option, setOption] = useState([]);
   const [isListOpen, setListOpen] = useState(false);
+
+  const clickHandler = useCallback(
+    (title) => {
+      setOption(
+        option.includes(title)
+          ? option.filter((g) => g !== title)
+          : (prev) => [...prev, title]
+      );
+    },
+    [option]
+  );
 
   return (
     <div className="select-input">
@@ -34,13 +45,7 @@ const Select = ({ placeholder, label }) => {
           {genres.map((g) => (
             <Option
               key={g.id}
-              onClick={() =>
-                setOption(
-                  option.includes(g.title)
-                    ? option.filter((el) => el !== g.title)
-                    : (prev) => [...prev, g.title]
-                )
-              }
+              onClick={() => clickHandler(g.title)}
               title={g.title}
             />
           ))}
@@ -57,6 +62,4 @@ Select.propTypes = {
 export default Select;
 
 // TODO
-// сделать иконку через функцию
-// сделать отдельные элементы для списка
 // сделать закрытие через outsideclick

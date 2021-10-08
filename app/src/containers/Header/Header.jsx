@@ -7,17 +7,25 @@ import SearchIcon from "../../Elements/Icon/Icons/SearchIcon/SearchIcon";
 import MovieDetails from "../../Components/MovieDetails/MovieDetails";
 import "./Header.scss";
 
-const Header = ({ dispatch, isMovieDetailsOpened }) => {
+const Header = ({
+  dispatch,
+  isMovieDetailsOpened,
+  setIsMovieDetailsOpened,
+}) => {
   return (
     <header className="header">
-      {isMovieDetailsOpened ? undefined : (
-        <div className="header__background"></div>
-      )}
       <div className="header__container">
         <div className="header__title">
           <Title />
           {isMovieDetailsOpened ? (
-            <SearchIcon width="29" height="30" viewBox="0 0 29 30" />
+            <SearchIcon
+              width="29"
+              height="30"
+              viewBox="0 0 29 30"
+              onClick={() => {
+                setIsMovieDetailsOpened(undefined);
+              }}
+            />
           ) : (
             <Button
               type={"button"}
