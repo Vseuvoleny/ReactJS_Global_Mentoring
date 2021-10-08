@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import CloseIcon from "../Icon/Icons/CloseIcon/CloseIcon";
 import PropTypes from "prop-types";
+import useOutsideClick from "../../utils/hooks/useOutsideClick";
 import "./DropDawn.scss";
 const DropDawn = ({ setDropDawnOpen, dispatch }) => {
   const ref = useRef(null);
@@ -16,12 +17,9 @@ const DropDawn = ({ setDropDawnOpen, dispatch }) => {
       setDropDawnOpen(false);
     }
   };
-  useEffect(() => {
-    document.addEventListener("click", outSideClick, true);
-    return () => {
-      document.removeEventListener("click", outSideClick, true);
-    };
-  });
+
+  useOutsideClick(outSideClick);
+
   return (
     <div className="dropdawn__container" ref={ref}>
       <CloseIcon
