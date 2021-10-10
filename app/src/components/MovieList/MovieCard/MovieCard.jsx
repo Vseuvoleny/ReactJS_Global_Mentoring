@@ -1,10 +1,10 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, memo } from "react";
 import PropTypes from "prop-types";
 import CardControler from "../CardContoler/CardControler";
 import { MainContext } from "../../../Containers/Main/Main";
 import "./MovieCard.scss";
 
-const MovieCard = ({ image, name, date, type, id }) => {
+const MovieCard = memo(({ image, name, date, type, id }) => {
   const [isDropDawnOpen, setDropDawnOpen] = useState(false);
   const context = useContext(MainContext);
   const { state, setMovieListOpen, dispatch } = context;
@@ -29,7 +29,7 @@ const MovieCard = ({ image, name, date, type, id }) => {
       </div>
     </div>
   );
-};
+});
 
 MovieCard.propTypes = {
   image: PropTypes.string,

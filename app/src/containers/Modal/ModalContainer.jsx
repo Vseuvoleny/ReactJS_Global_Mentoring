@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import PropTypes from "prop-types";
 import ApplyModal from "../../Components/ApplyModal/ApplyModal";
 import EditModal from "../../Components/EditModal/EditModal";
@@ -6,18 +6,21 @@ import DeleteModal from "../../Components/DeleteModal/DeleteModal";
 import "./ModalContainer.scss";
 
 const ModalContainer = ({ state, dispatch }) => {
-  const defineModal = ({ modal }) => {
-    switch (modal) {
-      case "apply":
-        return <ApplyModal />;
-      case "edit":
-        return <EditModal />;
-      case "delete":
-        return <DeleteModal />;
-      default:
-        return undefined;
-    }
-  };
+  const defineModal = useCallback(
+    (modal) => {
+      switch (modal) {
+        case "apply":
+          return <ApplyModal />;
+        case "edit":
+          return <EditModal />;
+        case "delete":
+          return <DeleteModal />;
+        default:
+          return undefined;
+      }
+    },
+    [state]
+  );
 
   return (
     <div className="modal">

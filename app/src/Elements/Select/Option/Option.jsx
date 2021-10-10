@@ -1,14 +1,14 @@
-import React from "react";
+import React, { memo } from "react";
 import PropTypes from "prop-types";
 import "./Option.scss";
 
-const Option = ({ onClick, classes = "", title }) => {
+const Option = memo(({ onClick, classes = "", title }) => {
   return (
-    <label className="option-label" onClick={onClick}>
+    <label className={`option-label ${classes}`} onClick={onClick}>
       {title}
     </label>
   );
-};
+});
 
 Option.propTypes = {
   onClick: PropTypes.func,

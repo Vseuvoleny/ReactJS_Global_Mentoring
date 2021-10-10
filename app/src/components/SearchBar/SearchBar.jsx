@@ -1,5 +1,6 @@
-import React, { forwardRef, useState } from "react";
+import React, { forwardRef, useState, useCallback } from "react";
 import Button from "../../Elements/Button/Button";
+import Input from "../../Elements/Input/Input";
 import "./SearchBar.scss";
 
 const SearchBar = forwardRef((props, ref) => {
@@ -13,26 +14,26 @@ const SearchBar = forwardRef((props, ref) => {
     setreqFilms(data.data);
   };
 
+  const filmRequest = useCallback(showFilms, [filmName]);
+
   return (
     <div className="search-bar">
       <h2 className="search-bar__title">find your movie</h2>
       <div className="search-bar__search-container">
-        <div className="search-bar__input">
-          <input
-            ref={ref}
-            className="input-field"
-            type="text"
-            placeholder="What do you want to watch?"
-            onChange={(e) => {
-              const value = e.target.value;
-              setFilmName(value);
-            }}
-          />
-        </div>
+        <Input
+          ref={ref}
+          classes="input-field"
+          placeholder="What do you want to watch?"
+          withLabel={false}
+          onChange={(e) => {
+            const value = e.target.value;
+            setFilmName(value);
+          }}
+        />
         <Button
           className={"search-bar"}
           type={"submit"}
-          clickHandler={() => showFilms()}
+          clickHandler={filmRequest}
           text={"Search"}
         />
       </div>

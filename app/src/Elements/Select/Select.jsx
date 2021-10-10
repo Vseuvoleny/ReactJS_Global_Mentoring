@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, memo } from "react";
 import PropTypes from "prop-types";
 import RedTriangle from "../Icon/Icons/RedTriangle/RedTriangle";
 import Option from "./Option/Option";
@@ -11,7 +11,7 @@ const genres = [
   { title: "Comedy", id: 4 },
 ];
 
-const Select = ({ placeholder, label }) => {
+const Select = memo(({ placeholder, label }) => {
   const [option, setOption] = useState([]);
   const [isListOpen, setListOpen] = useState(false);
 
@@ -53,10 +53,11 @@ const Select = ({ placeholder, label }) => {
       )}
     </div>
   );
-};
+});
 
 Select.propTypes = {
   placeholder: PropTypes.string,
+  label: PropTypes.string,
 };
 
 export default Select;

@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import CloseIcon from "../Icon/Icons/CloseIcon/CloseIcon";
 import PropTypes from "prop-types";
 import useOutsideClick from "../../utils/hooks/useOutsideClick";

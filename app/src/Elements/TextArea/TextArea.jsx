@@ -1,8 +1,8 @@
-import React from "react";
+import React, { memo } from "react";
 import PropTypes from "prop-types";
 import "./TextArea.scss";
 
-const TextArea = ({ title }) => {
+const TextArea = memo(({ title }) => {
   return (
     <div className="textarea-container">
       <label html={title} className="textarea-container__title">
@@ -15,8 +15,10 @@ const TextArea = ({ title }) => {
       ></textarea>
     </div>
   );
-};
+});
 
-TextArea.propTypes = {};
+TextArea.propTypes = {
+  title: PropTypes.string,
+};
 
 export default TextArea;
