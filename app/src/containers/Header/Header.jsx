@@ -1,0 +1,30 @@
+import React from "react";
+import SearchBar from "../../Components/SearchBar/SearchBar";
+import Button from "../../Elements/Button/Button";
+import Title from "../../Elements/Title/Title";
+import "./Header.scss";
+
+const Header = ({ dispatch }) => {
+  return (
+    <header className="header">
+      <div className="header__background"></div>
+      <div className="header__container">
+        <div className="header__title">
+          <Title />
+          <Button
+            type={"button"}
+            clickHandler={() => {
+              dispatch({ type: "apply" });
+            }}
+            className={"add-movie"}
+            text={"+ add movie"}
+          />
+        </div>
+
+        <SearchBar />
+      </div>
+    </header>
+  );
+};
+
+export default Header;

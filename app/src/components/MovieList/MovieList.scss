@@ -1,0 +1,21 @@
+.cards {
+  &__container {
+    margin: 0 60px;
+  }
+  &__counter {
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 400;
+    span {
+      font-weight: 600;
+    }
+  }
+  &__list {
+    margin-top: 28px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-area: auto;
+    column-gap: 60px;
+    row-gap: 38px;
+  }
+}
