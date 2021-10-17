@@ -3,17 +3,18 @@ import PropTypes from "prop-types";
 import ApplyModal from "../../Components/ApplyModal/ApplyModal";
 import EditModal from "../../Components/EditModal/EditModal";
 import DeleteModal from "../../Components/DeleteModal/DeleteModal";
+import { APPLY_MODAL, EDIT_MODAL, DELETE_MODAL } from "../../Store/ActionTypes";
 import "./ModalContainer.scss";
 
 const ModalContainer = ({ state, dispatch }) => {
   const defineModal = useCallback(
-    (modal) => {
+    ({ modal }) => {
       switch (modal) {
-        case "apply":
+        case APPLY_MODAL:
           return <ApplyModal />;
-        case "edit":
+        case EDIT_MODAL:
           return <EditModal />;
-        case "delete":
+        case DELETE_MODAL:
           return <DeleteModal />;
         default:
           return undefined;

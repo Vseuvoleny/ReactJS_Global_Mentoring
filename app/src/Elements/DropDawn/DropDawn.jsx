@@ -15,6 +15,7 @@ const DropDawn = ({ setDropDawnOpen, dispatch }) => {
       ref.current.contains(e.target) &&
       !svgRef.current.contains(e.target)
     ) {
+      return;
     } else {
       setDropDawnOpen(false);
     }

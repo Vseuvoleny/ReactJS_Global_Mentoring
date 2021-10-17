@@ -1,19 +1,27 @@
-import React, { useState } from "react";
-import { useEffectOnce } from "../../utils/hooks/useEffectOnce";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { fetchFilms } from "../../Store/ActionsCreator";
 import Nav from "../../Components/Nav/Nav";
 import MovieList from "../../Components/MovieList/MovieList";
-import "./Main.scss";
 import Filters from "../../Components/Filters/Filters";
+import "./Main.scss";
 
 export const MainContext = React.createContext();
 
-const Main = ({ state, dispatch, setIsMovieDetailsOpened, films }) => {
+const Main = ({
+  state,
+  dispatch,
+  setIsMovieDetailsOpened,
+  films,
+  sortType,
+  error,
+}) => {
   const [isFiltersOpen, setisFiltersOpen] = useState(false);
 
-  useEffectOnce(fetchFilms);
+  useEffect(() => {
+    fetchFilms(sortType);
+  }, [sortType]);
 
   return (
     <MainContext.Provider
@@ -28,7 +36,7 @@ const Main = ({ state, dispatch, setIsMovieDetailsOpened, films }) => {
             setisFiltersOpen={setisFiltersOpen}
           />
         </div>
-        <MovieList films={films} />
+        {error ? error.message ?? error : <MovieList films={films} />}
       </main>
     </MainContext.Provider>
   );
@@ -40,8 +48,8 @@ Main.propTypes = {
   setIsMovieDetailsOpened: PropTypes.func,
 };
 
-const mapStateToProps = ({ films }) => {
-  return { films };
+const mapStateToProps = ({ films, sortType, error }) => {
+  return { films, sortType, error };
 };
 
 export default connect(mapStateToProps, fetchFilms)(Main);

@@ -5,6 +5,7 @@ import Button from "../../Elements/Button/Button";
 import Title from "../../Elements/Title/Title";
 import SearchIcon from "../../Elements/Icon/Icons/SearchIcon/SearchIcon";
 import MovieDetails from "../../Components/MovieDetails/MovieDetails";
+import { APPLY_MODAL } from "../../Store/ActionTypes";
 import "./Header.scss";
 
 const Header = ({
@@ -38,7 +39,7 @@ const Header = ({
             <Button
               type={"button"}
               clickHandler={() => {
-                dispatch({ type: "apply" });
+                dispatch({ type: APPLY_MODAL });
               }}
               className={"add-movie"}
               text={"+ add movie"}
