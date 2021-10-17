@@ -3,6 +3,8 @@ import CloseIcon from "../Icon/Icons/CloseIcon/CloseIcon";
 import PropTypes from "prop-types";
 import useOutsideClick from "../../utils/hooks/useOutsideClick";
 import "./DropDawn.scss";
+
+// TODO нужно сделать dropdawn универсальным
 const DropDawn = ({ setDropDawnOpen, dispatch }) => {
   const ref = useRef(null);
   const svgRef = useRef(null);

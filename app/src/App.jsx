@@ -7,29 +7,33 @@ import Footer from "./Containers/Footer/Footer";
 import { modalReducer } from "./Store/ModalReducers";
 import { initialState } from "./Store/modalState";
 import ModalContainer from "./Containers/Modal/ModalContainer";
+import { Provider } from "react-redux";
+import { store } from "./Store/CreateStore";
 import "./App.scss";
 
 const App = () => {
   const [state, dispatch] = useReducer(modalReducer, initialState);
   const [isMovieDetailsOpened, setIsMovieDetailsOpened] = useState(false);
   return (
-    <ErrorBoundary>
-      <Header
-        dispatch={dispatch}
-        isMovieDetailsOpened={isMovieDetailsOpened}
-        setIsMovieDetailsOpened={setIsMovieDetailsOpened}
-      />
-      <Main
-        dispatch={dispatch}
-        setIsMovieDetailsOpened={setIsMovieDetailsOpened}
-      />
-      <Footer />
-      {state.modal &&
-        createPortal(
-          <ModalContainer state={state} dispatch={dispatch} />,
-          document.getElementById("root")
-        )}
-    </ErrorBoundary>
+    <Provider store={store}>
+      <ErrorBoundary>
+        <Header
+          dispatch={dispatch}
+          isMovieDetailsOpened={isMovieDetailsOpened}
+          setIsMovieDetailsOpened={setIsMovieDetailsOpened}
+        />
+        <Main
+          dispatch={dispatch}
+          setIsMovieDetailsOpened={setIsMovieDetailsOpened}
+        />
+        <Footer />
+        {state.modal &&
+          createPortal(
+            <ModalContainer state={state} dispatch={dispatch} />,
+            document.getElementById("root")
+          )}
+      </ErrorBoundary>
+    </Provider>
   );
 };
 

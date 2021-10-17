@@ -1,12 +1,14 @@
+import { APPLY_MODAL, DELETE_MODAL, EDIT_MODAL } from "./ActionTypes";
+
 export const modalReducer = (state, action) => {
   switch (action.type) {
-    case "apply":
-      return { modal: (state.modal = "apply") };
-    case "edit":
-      return { modal: (state.modal = "edit") };
-    case "delete":
-      return { modal: (state.modal = "delete") };
+    case APPLY_MODAL:
+      return { modal: (state.modal = APPLY_MODAL) };
+    case EDIT_MODAL:
+      return { modal: (state.modal = EDIT_MODAL) };
+    case DELETE_MODAL:
+      return { modal: (state.modal = DELETE_MODAL) };
     default:
-      return { modal: (state.modal = "") };
+      return { modal: "" };
   }
 };

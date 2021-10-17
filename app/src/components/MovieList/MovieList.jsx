@@ -12,11 +12,11 @@ const MovieList = ({ films }) => {
       <div className="cards__list">
         {films.map((f) => (
           <MovieCard
-            image={f.image}
-            name={f.name}
+            image={f.poster_path}
+            name={f.title}
             key={f.id}
-            type={f.type}
-            date={f.date}
+            type={f.genres.join(", ")}
+            date={f.release_date.split("-")[0]}
             id={f.id}
           />
         ))}

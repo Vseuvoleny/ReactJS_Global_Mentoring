@@ -1,0 +1,10 @@
+{
+  "plugins": ["stylelint-order"],
+  "extends": ["stylelint-config-standard", "stylelint-config-sass-guidelines"],
+  "rules": {
+    "indentation": "tab",
+    "number-leading-zero": null,
+    "order/order": ["custom-properties", "declarations"],
+    "order/properties-order": ["width", "height"]
+  }
+}
