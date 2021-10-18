@@ -1,7 +1,5 @@
 import React, { useRef } from "react";
-import { connect } from "react-redux";
 import RedTriangle from "../../Elements/Icon/Icons/RedTriangle/RedTriangle";
-import { SET_FILTER } from "../../Store/ActionTypes";
 import "./Filters.scss";
 
 const Filters = ({ isFiltersOpen, setisFiltersOpen, setFilter, sortType }) => {
@@ -35,16 +33,4 @@ const Filters = ({ isFiltersOpen, setisFiltersOpen, setFilter, sortType }) => {
   );
 };
 
-const mapStateToProps = ({ sortType }) => {
-  return {
-    sortType,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setFilter: (payload) => dispatch({ type: SET_FILTER, payload }),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Filters);
+export default Filters;

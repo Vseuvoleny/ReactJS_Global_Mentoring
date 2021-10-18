@@ -1,7 +1,11 @@
 import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { initialState } from "./store";
-import { GET_FILMS_BY_RELEASE_DATE, SET_FILTER } from "./ActionTypes";
+import {
+  GET_FILMS_BY_RELEASE_DATE,
+  SET_FILTER,
+  SET_GENRES,
+} from "./ActionTypes";
 
 function RootReducer(state = initialState, action) {
   switch (action.type) {
@@ -19,6 +23,11 @@ function RootReducer(state = initialState, action) {
       return {
         ...state,
         error: action.error,
+      };
+    case SET_GENRES:
+      return {
+        ...state,
+        genres: action.payload,
       };
     default:
       return state;
