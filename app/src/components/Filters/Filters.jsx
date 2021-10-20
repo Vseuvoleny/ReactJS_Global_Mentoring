@@ -7,6 +7,10 @@ import "./Filters.scss";
 const Filters = ({ isFiltersOpen, setisFiltersOpen, sortType }) => {
   const dispatch = useDispatch();
 
+  const hanldeOptionsClick = (option) => () => {
+    dispatch(setFilter(option));
+  };
+
   return (
     <div className="filter">
       <span className="filter__status">sort by</span>
@@ -21,19 +25,16 @@ const Filters = ({ isFiltersOpen, setisFiltersOpen, sortType }) => {
         <div className="filter__expanded-list">
           <div
             className="filter__option"
-            onClick={() => dispatch(setFilter("release_date"))}
+            onClick={hanldeOptionsClick("release_date")}
           >
             Release date
           </div>
-          <div
-            className="filter__option"
-            onClick={() => dispatch(setFilter("genre"))}
-          >
+          <div className="filter__option" onClick={hanldeOptionsClick("genre")}>
             Genre
           </div>
           <div
             className="filter__option"
-            onClick={() => dispatch(setFilter("rating"))}
+            onClick={hanldeOptionsClick("rating")}
           >
             Rating
           </div>

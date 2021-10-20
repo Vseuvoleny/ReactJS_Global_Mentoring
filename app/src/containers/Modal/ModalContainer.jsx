@@ -30,7 +30,6 @@ const ModalContainer = ({ state, dispatch }) => {
         <span className="close_icon" onClick={() => dispatch({ type: "" })}>
           &#x2715;
         </span>
-
         {defineModal(state)}
       </div>
     </div>
