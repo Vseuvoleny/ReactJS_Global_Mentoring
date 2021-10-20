@@ -1,8 +1,12 @@
-import React, { useRef } from "react";
+import React from "react";
+import { useDispatch } from "react-redux";
 import RedTriangle from "../../Elements/Icon/Icons/RedTriangle/RedTriangle";
+import { setFilter } from "../../Store/ActionCreator";
 import "./Filters.scss";
 
-const Filters = ({ isFiltersOpen, setisFiltersOpen, setFilter, sortType }) => {
+const Filters = ({ isFiltersOpen, setisFiltersOpen, sortType }) => {
+  const dispatch = useDispatch();
+
   return (
     <div className="filter">
       <span className="filter__status">sort by</span>
@@ -17,14 +21,20 @@ const Filters = ({ isFiltersOpen, setisFiltersOpen, setFilter, sortType }) => {
         <div className="filter__expanded-list">
           <div
             className="filter__option"
-            onClick={() => setFilter("release_date")}
+            onClick={() => dispatch(setFilter("release_date"))}
           >
             Release date
           </div>
-          <div className="filter__option" onClick={() => setFilter("genre")}>
+          <div
+            className="filter__option"
+            onClick={() => dispatch(setFilter("genre"))}
+          >
             Genre
           </div>
-          <div className="filter__option" onClick={() => setFilter("rating")}>
+          <div
+            className="filter__option"
+            onClick={() => dispatch(setFilter("rating"))}
+          >
             Rating
           </div>
         </div>

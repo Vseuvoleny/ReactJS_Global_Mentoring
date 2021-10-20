@@ -2,14 +2,15 @@ import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { initialState } from "./store";
 import {
-  GET_FILMS_BY_RELEASE_DATE,
+  GET_FILMS_ASYNC,
   SET_FILTER,
   SET_GENRES,
+  FILM_REQUEST_FAILURE,
 } from "./ActionTypes";
 
 function RootReducer(state = initialState, action) {
   switch (action.type) {
-    case GET_FILMS_BY_RELEASE_DATE:
+    case GET_FILMS_ASYNC:
       return {
         ...state,
         films: action.payload,
@@ -19,10 +20,10 @@ function RootReducer(state = initialState, action) {
         ...state,
         sortType: action.payload,
       };
-    case "FILM_REQUEST_FAILURE":
+    case FILM_REQUEST_FAILURE:
       return {
         ...state,
-        error: action.error,
+        error: action.payload.error,
       };
     case SET_GENRES:
       return {

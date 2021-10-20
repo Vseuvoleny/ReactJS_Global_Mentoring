@@ -1,16 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, memo } from "react";
+import { useDispatch } from "react-redux";
+import { setGenres } from "../../Store/ActionCreator";
 import "./Nav.scss";
 
-const genres = [
-  { title: "All", id: 1 },
-  { title: "Documentary", id: 2 },
-  { title: "Comedy", id: 3 },
-  { title: "Horror", id: 4 },
-  { title: "Crime", id: 5 },
-];
-
-const Nav = ({ setGenre }) => {
+const Nav = memo(() => {
   const [activeFilm, setActiveFilm] = useState(1);
+  const dispatch = useDispatch();
+
+  const genres = [
+    { title: "All", id: 1 },
+    { title: "Documentary", id: 2 },
+    { title: "Comedy", id: 3 },
+    { title: "Horror", id: 4 },
+    { title: "Crime", id: 5 },
+  ];
 
   return (
     <ul className="films-category__films">
@@ -20,7 +23,7 @@ const Nav = ({ setGenre }) => {
           className={`film ${activeFilm === f.id ? "active" : ""}`}
           onClick={() => {
             setActiveFilm(f.id);
-            setGenre(f.title);
+            dispatch(setGenres(f.title));
           }}
         >
           {f.title}
@@ -28,6 +31,6 @@ const Nav = ({ setGenre }) => {
       ))}
     </ul>
   );
-};
+});
 
 export default Nav;
