@@ -51,8 +51,13 @@ Main.propTypes = {
   setIsMovieDetailsOpened: PropTypes.func,
 };
 
-const mapStateToProps = ({ films, sortType, error, genres }) => {
-  return { films, sortType, error, genres };
+const mapStateToProps = ({ filmsStore }) => {
+  return {
+    films: filmsStore.films,
+    sortType: filmsStore.sortType,
+    error: filmsStore.error,
+    genres: filmsStore.genres,
+  };
 };
 
 export default connect(mapStateToProps, null)(Main);

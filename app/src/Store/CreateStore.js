@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware } from "redux";
+import { createStore, applyMiddleware, combineReducers } from "redux";
 import thunk from "redux-thunk";
 import { initialState } from "./store";
 import {
@@ -7,8 +7,9 @@ import {
   SET_GENRES,
   FILM_REQUEST_FAILURE,
 } from "./ActionTypes";
+import { modalReducer } from "./ModalReducers";
 
-function RootReducer(state = initialState, action) {
+function filmReducer(state = initialState, action) {
   switch (action.type) {
     case GET_FILMS_ASYNC:
       return {
@@ -34,5 +35,9 @@ function RootReducer(state = initialState, action) {
       return state;
   }
 }
+const RootReducer = combineReducers({
+  filmsStore: filmReducer,
+  modalStore: modalReducer,
+});
 
 export const store = createStore(RootReducer, applyMiddleware(thunk));
