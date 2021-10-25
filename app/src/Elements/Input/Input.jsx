@@ -8,8 +8,9 @@ const Input = forwardRef(
       title,
       type = "text",
       classes = "",
-      defaultValue = "",
+      value = "",
       withLabel = true,
+      onChange,
       ...rest
     },
     ref
@@ -25,8 +26,9 @@ const Input = forwardRef(
           ref={ref}
           type={type}
           id={title}
-          defaultValue={defaultValue}
+          value={value}
           className={`${classes} input`}
+          onChange={onChange}
           {...rest}
           autoComplete="off"
         />

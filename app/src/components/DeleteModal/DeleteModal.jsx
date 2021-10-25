@@ -1,25 +1,26 @@
-import React from "react";
-import PropTypes from "prop-types";
+import { useFormik } from "formik";
+import React, { memo } from "react";
 import Button from "../../Elements/Button/Button";
 import "./DeleteModal.scss";
 
-const DeleteModal = () => {
+const DeleteModal = memo(() => {
+  const formik = useFormik({
+    onSubmit: () => {},
+  });
   return (
-    <section className="delete-modal">
+    <form className="delete-modal" onSubmit={formik.handleSubmit}>
       <span className="delete-modal__title">Delete movie</span>
       <span className="delete-modal__request">
         Are you sure you want to delete this movie?
       </span>
       <Button
         className="delete-modal"
-        type="button"
+        type="submit"
         text="confirm"
         clickHandler={() => {}}
       />
-    </section>
+    </form>
   );
-};
-
-DeleteModal.propTypes = {};
+});
 
 export default DeleteModal;

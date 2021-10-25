@@ -11,20 +11,8 @@ const genres = [
   { title: "Comedy", id: 4 },
 ];
 
-const Select = memo(({ placeholder, label }) => {
-  const [option, setOption] = useState([]);
+const Select = ({ placeholder, label, onClick, value }) => {
   const [isListOpen, setListOpen] = useState(false);
-
-  const clickHandler = useCallback(
-    (title) => {
-      setOption(
-        option.includes(title)
-          ? option.filter((g) => g !== title)
-          : (prev) => [...prev, title]
-      );
-    },
-    [option]
-  );
 
   return (
     <div className="select-input">
@@ -45,7 +33,7 @@ const Select = memo(({ placeholder, label }) => {
           {genres.map((g) => (
             <Option
               key={g.id}
-              onClick={() => clickHandler(g.title)}
+              onClick={() => onClick(g.title)}
               title={g.title}
             />
           ))}
@@ -53,11 +41,12 @@ const Select = memo(({ placeholder, label }) => {
       )}
     </div>
   );
-});
+};
 
 Select.propTypes = {
   placeholder: PropTypes.string,
   label: PropTypes.string,
+  onClick: PropTypes.func,
 };
 
 export default Select;
