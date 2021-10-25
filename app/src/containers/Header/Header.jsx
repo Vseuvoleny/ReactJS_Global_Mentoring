@@ -1,18 +1,16 @@
 import React, { useRef, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 import SearchBar from "../../Components/SearchBar/SearchBar";
 import Button from "../../Elements/Button/Button";
 import Title from "../../Elements/Title/Title";
 import SearchIcon from "../../Elements/Icon/Icons/SearchIcon/SearchIcon";
 import MovieDetails from "../../Components/MovieDetails/MovieDetails";
-import { APPLY_MODAL } from "../../Store/ActionTypes";
+import { setApplyModal } from "../../Store/ActionCreator";
 import "./Header.scss";
 
-const Header = ({
-  dispatch,
-  isMovieDetailsOpened,
-  setIsMovieDetailsOpened,
-}) => {
+const Header = ({ isMovieDetailsOpened, setIsMovieDetailsOpened }) => {
+  const dispatch = useDispatch();
   const ref = useRef();
 
   useEffect(() => {
@@ -39,7 +37,7 @@ const Header = ({
             <Button
               type={"button"}
               clickHandler={() => {
-                dispatch({ type: APPLY_MODAL });
+                dispatch(setApplyModal());
               }}
               className={"add-movie"}
               text={"+ add movie"}
@@ -54,7 +52,6 @@ const Header = ({
 };
 
 Header.propTypes = {
-  dispatch: PropTypes.func,
   isMovieDetailsOpened: PropTypes.bool,
 };
 

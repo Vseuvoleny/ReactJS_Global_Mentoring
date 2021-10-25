@@ -1,4 +1,9 @@
-import { APPLY_MODAL, DELETE_MODAL, EDIT_MODAL } from "./ActionTypes";
+import {
+  APPLY_MODAL,
+  DELETE_MODAL,
+  EDIT_MODAL,
+  INACTIVE_MODAL,
+} from "./ActionTypes";
 
 const initialState = {
   activeModal: "",
@@ -12,6 +17,8 @@ export const modalReducer = (state = initialState, action) => {
       return { ...state, activeModal: EDIT_MODAL };
     case DELETE_MODAL:
       return { ...state, activeModal: DELETE_MODAL };
+    case INACTIVE_MODAL:
+      return { ...state, activeModal: "" };
     default:
       return state;
   }

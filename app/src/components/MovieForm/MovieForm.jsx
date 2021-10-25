@@ -6,7 +6,7 @@ import Select from "../../Elements/Select/Select";
 import "./MovieForm.scss";
 import TextArea from "../../Elements/TextArea/TextArea";
 
-const MovieForm = ({ applyMode = true }) => {
+const MovieForm = () => {
   return (
     <form className="form-container">
       <div className="form-container__inputs">
