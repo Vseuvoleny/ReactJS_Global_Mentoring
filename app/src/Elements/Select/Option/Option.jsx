@@ -1,14 +1,26 @@
-import React, { memo } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import "./Option.scss";
 
-const Option = memo(({ onClick, classes = "", title }) => {
+const Option = ({ onChange, classes = "", title }) => {
   return (
-    <label className={`option-label ${classes}`} onClick={onClick}>
-      {title}
-    </label>
+    <>
+      <input
+        type="checkbox"
+        name={title}
+        id={title}
+        className="option-checkbox"
+      />
+      <label
+        className={`option-label ${classes}`}
+        htmlFor={title}
+        onChange={onChange}
+      >
+        {title}
+      </label>
+    </>
   );
-});
+};
 
 Option.propTypes = {
   onClick: PropTypes.func,

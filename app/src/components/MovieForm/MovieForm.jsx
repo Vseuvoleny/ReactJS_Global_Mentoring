@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, useState, useCallback } from "react";
 import Button from "../../Elements/Button/Button";
 import Input from "../../Elements/Input/Input";
 import Select from "../../Elements/Select/Select";
@@ -50,7 +50,7 @@ const MovieForm = memo(() => {
             placeholder={"Select genre"}
             label={"genre"}
             option={formik.initialValues.genres}
-            onClick={clickHandlerSelect}
+            onChange={clickHandlerSelect}
           />
         </div>
         <div className="left">

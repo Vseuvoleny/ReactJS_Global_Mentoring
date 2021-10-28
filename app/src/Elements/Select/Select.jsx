@@ -11,7 +11,7 @@ const genres = [
   { title: "Comedy", id: 4 },
 ];
 
-const Select = ({ placeholder, label, onClick, value }) => {
+const Select = ({ placeholder, label, onChange, value, option }) => {
   const [isListOpen, setListOpen] = useState(false);
 
   return (
@@ -31,11 +31,7 @@ const Select = ({ placeholder, label, onClick, value }) => {
       {isListOpen && (
         <div className="options">
           {genres.map((g) => (
-            <Option
-              key={g.id}
-              onClick={() => onClick(g.title)}
-              title={g.title}
-            />
+            <Option key={g.id} onChange={onChange} title={g.title} />
           ))}
         </div>
       )}
