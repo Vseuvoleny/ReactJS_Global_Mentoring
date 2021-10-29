@@ -1,18 +1,21 @@
-import React, { useState, useCallback, memo } from "react";
+import React, { useState } from "react";
+import { FieldProps } from "formik";
 import PropTypes from "prop-types";
 import RedTriangle from "../Icon/Icons/RedTriangle/RedTriangle";
 import Option from "./Option/Option";
 import "./Select.scss";
 
-const genres = [
-  { title: "Crime", id: 1 },
-  { title: "Documentary", id: 2 },
-  { title: "Horror", id: 3 },
-  { title: "Comedy", id: 4 },
-];
-
-const Select = ({ placeholder, label, onClick, value }) => {
+const Select = ({ placeholder, label, options, onChange }) => {
   const [isListOpen, setListOpen] = useState(false);
+  const [option, setOption] = useState([1, 2]);
+
+  // const onChange = (opt) => {
+  //   setOption(
+  //     option.includes(opt)
+  //       ? option.filter((g) => g !== opt)
+  //       : (prev) => [...prev, opt]
+  //   );
+  // };
 
   return (
     <div className="select-input">
@@ -30,10 +33,10 @@ const Select = ({ placeholder, label, onClick, value }) => {
       </div>
       {isListOpen && (
         <div className="options">
-          {genres.map((g) => (
+          {options.map((g) => (
             <Option
               key={g.id}
-              onClick={() => onClick(g.title)}
+              onClick={() => onChange(option)}
               title={g.title}
             />
           ))}

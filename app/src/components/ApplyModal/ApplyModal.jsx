@@ -1,7 +1,7 @@
 import React from "react";
-import PropTypes from "prop-types";
 import MovieForm from "../MovieForm/MovieForm";
 import "./ApplyModal.scss";
+
 const ApplyModal = () => {
   return (
     <section className="apply-modal">
@@ -10,7 +10,5 @@ const ApplyModal = () => {
     </section>
   );
 };
-
-ApplyModal.propTypes = {};
 
 export default ApplyModal;
