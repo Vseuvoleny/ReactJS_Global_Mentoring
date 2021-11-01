@@ -1,25 +1,25 @@
-import { useFormik } from "formik";
 import React, { memo } from "react";
+import { Formik } from "formik";
 import Button from "../../Elements/Button/Button";
 import "./DeleteModal.scss";
 
 const DeleteModal = memo(() => {
-  const formik = useFormik({
-    onSubmit: () => {},
-  });
+  const onSubmit = (value) => {
+    console.log(value);
+  };
+
   return (
-    <form className="delete-modal" onSubmit={formik.handleSubmit}>
-      <span className="delete-modal__title">Delete movie</span>
-      <span className="delete-modal__request">
-        Are you sure you want to delete this movie?
-      </span>
-      <Button
-        className="delete-modal"
-        type="submit"
-        text="confirm"
-        clickHandler={() => {}}
-      />
-    </form>
+    <Formik onSubmit={onSubmit}>
+      {() => {
+        <form className="delete-modal">
+          <span className="delete-modal__title">Delete movie</span>
+          <span className="delete-modal__request">
+            Are you sure you want to delete this movie?
+          </span>
+          <Button className="delete-modal" type="submit" text="confirm" />
+        </form>;
+      }}
+    </Formik>
   );
 });
 
