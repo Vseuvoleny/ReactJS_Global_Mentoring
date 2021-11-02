@@ -1,18 +1,22 @@
-import React from "react";
+import React, { useCallback, memo } from "react";
+import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 import ApplyModal from "../../Components/ApplyModal/ApplyModal";
 import EditModal from "../../Components/EditModal/EditModal";
 import DeleteModal from "../../Components/DeleteModal/DeleteModal";
+import { APPLY_MODAL, EDIT_MODAL, DELETE_MODAL } from "../../Store/ActionTypes";
 import "./ModalContainer.scss";
+import { setInactiveModal } from "../../Store/ActionCreator";
 
-const ModalContainer = ({ state, dispatch }) => {
-  const defineModal = ({ modal }) => {
-    switch (modal) {
-      case "apply":
+const ModalContainer = memo(({ modalStore }) => {
+  const dispatch = useDispatch();
+  const defineModal = (modalType) => {
+    switch (modalType) {
+      case APPLY_MODAL:
         return <ApplyModal />;
-      case "edit":
+      case EDIT_MODAL:
         return <EditModal />;
-      case "delete":
+      case DELETE_MODAL:
         return <DeleteModal />;
       default:
         return undefined;
@@ -23,17 +27,20 @@ const ModalContainer = ({ state, dispatch }) => {
     <div className="modal">
       <div className="modal__overlay"></div>
       <div className="modal__container">
-        <span className="close_icon" onClick={() => dispatch({ type: "" })}>
+        <span
+          className="close_icon"
+          onClick={() => dispatch(setInactiveModal())}
+        >
           &#x2715;
         </span>
-
-        {defineModal(state)}
+        {defineModal(modalStore)}
       </div>
     </div>
   );
-};
+});
+
 ModalContainer.propTypes = {
-  state: PropTypes.string,
+  modalStore: PropTypes.string,
 };
 
 export default ModalContainer;

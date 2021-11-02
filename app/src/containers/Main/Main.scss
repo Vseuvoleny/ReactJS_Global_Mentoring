@@ -14,24 +14,5 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 24px;
-    .filter {
-      & > * {
-        text-transform: uppercase;
-        display: inline-block;
-        line-height: 20px;
-        font-size: 16px;
-      }
-      &__status {
-        margin-right: 32px;
-        opacity: 0.6;
-      }
-      &__options {
-        font-weight: 500;
-        svg {
-          vertical-align: middle;
-          margin-left: 12px;
-        }
-      }
-    }
   }
 }

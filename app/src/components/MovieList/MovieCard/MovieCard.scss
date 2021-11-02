@@ -1,10 +1,16 @@
 .card {
   &__item {
-    max-width: 320px;
-    width: 100%;
+    width: 320px;
   }
   &__image {
     position: relative;
+
+    img {
+      width: 320px;
+      height: 480px;
+      object-fit: contain;
+    }
+
     &:hover &-icon {
       visibility: visible;
       opacity: 1;

@@ -1,24 +1,23 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./MovieList.scss";
 import MovieCard from "./MovieCard/MovieCard";
+import "./MovieList.scss";
 
-const MovieList = ({ films, state, dispatch }) => {
+const MovieList = ({ films }) => {
   return (
     <section className="cards__container">
       <span className="cards__counter">
         <span>{films.length}</span> movies found
       </span>
       <div className="cards__list">
-        {films.map((c) => (
+        {films.map((f) => (
           <MovieCard
-            image={c.image}
-            name={c.name}
-            key={c.id}
-            type={c.type}
-            date={c.date}
-            dispatch={dispatch}
-            state={state}
+            image={f.poster_path}
+            name={f.title}
+            key={f.id}
+            type={f.genres.join(", ")}
+            date={f.release_date.split("-")[0]}
+            id={f.id}
           />
         ))}
       </div>
@@ -34,8 +33,6 @@ MovieList.propTypes = {
     type: PropTypes.string,
     id: PropTypes.number,
   }),
-  dispatch: PropTypes.func,
-  state: PropTypes.string,
 };
 
 export default MovieList;

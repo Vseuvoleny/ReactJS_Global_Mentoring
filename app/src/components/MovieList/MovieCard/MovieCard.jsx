@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext, memo } from "react";
 import PropTypes from "prop-types";
 import CardControler from "../CardContoler/CardControler";
+import { MainContext } from "../../../Containers/Main/Main";
 import "./MovieCard.scss";
 
-const MovieCard = ({ image, name, date, type, state, dispatch }) => {
+const MovieCard = memo(({ image, name, date, type, id }) => {
   const [isDropDawnOpen, setDropDawnOpen] = useState(false);
+  const context = useContext(MainContext);
+  const { state, setMovieListOpen, dispatch } = context;
+
   return (
-    <div className="card__item">
+    <div className="card__item" onClick={() => setMovieListOpen(id)}>
       <picture className="card__image">
         <CardControler
           isDropDawnOpen={isDropDawnOpen}
@@ -25,15 +29,14 @@ const MovieCard = ({ image, name, date, type, state, dispatch }) => {
       </div>
     </div>
   );
-};
+});
 
 MovieCard.propTypes = {
   image: PropTypes.string,
   name: PropTypes.string,
   date: PropTypes.string,
   type: PropTypes.string,
-  dispatch: PropTypes.func,
-  state: PropTypes.string,
+  id: PropTypes.number,
 };
 
 export default MovieCard;

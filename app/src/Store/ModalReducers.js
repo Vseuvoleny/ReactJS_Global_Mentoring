@@ -1,12 +1,25 @@
-export const modalReducer = (state, action) => {
+import {
+  APPLY_MODAL,
+  DELETE_MODAL,
+  EDIT_MODAL,
+  INACTIVE_MODAL,
+} from "./ActionTypes";
+
+const initialState = {
+  activeModal: "",
+};
+
+export const modalReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "apply":
-      return { modal: (state.modal = "apply") };
-    case "edit":
-      return { modal: (state.modal = "edit") };
-    case "delete":
-      return { modal: (state.modal = "delete") };
+    case APPLY_MODAL:
+      return { ...state, activeModal: APPLY_MODAL };
+    case EDIT_MODAL:
+      return { ...state, activeModal: EDIT_MODAL };
+    case DELETE_MODAL:
+      return { ...state, activeModal: DELETE_MODAL };
+    case INACTIVE_MODAL:
+      return { ...state, activeModal: "" };
     default:
-      return { modal: (state.modal = "") };
+      return state;
   }
 };

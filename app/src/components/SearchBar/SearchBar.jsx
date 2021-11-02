@@ -1,50 +1,45 @@
-import React, { Component } from "react";
+import React, { forwardRef, useState, useCallback } from "react";
 import Button from "../../Elements/Button/Button";
+import Input from "../../Elements/Input/Input";
 import "./SearchBar.scss";
 
-export default class SearchBar extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { filmName: "", reqFilms: undefined };
-  }
-  async showFilms() {
-    const URL = `http://localhost:4000/movies?sortOrder=desc&search=${this.state.filmName}&searchBy=title&limit=10`;
+const SearchBar = forwardRef((props, ref) => {
+  const [filmName, setFilmName] = useState("");
+  const [reqFilms, setreqFilms] = useState(undefined);
+
+  const showFilms = async () => {
+    const URL = `http://localhost:4000/movies?sortOrder=desc&search=${filmName}&searchBy=title&limit=10`;
     const res = await fetch(URL);
     const data = await res.json();
-    await this.setState({ reqFilms: data.data });
-  }
+    setreqFilms(data.data);
+  };
 
-  render() {
-    return (
-      <div className="search-bar">
-        <h2 className="search-bar__title">find your movie</h2>
-        <div className="search-bar__search-container">
-          <div className="search-bar__input">
-            <input
-              className="input-field"
-              type="text"
-              placeholder="What do you want to watch?"
-              onChange={(e) => {
-                const value = e.target.value;
-                this.setState({ filmName: value });
-              }}
-            />
-          </div>
-          <Button
-            className={"search-bar"}
-            type={"submit"}
-            clickHandler={() => this.showFilms()}
-            text={"Search"}
-          />
-        </div>
-        {this.state.reqFilms && (
-          <ul>
-            {this.state.reqFilms.map((f) => (
-              <li>{f.title}</li>
-            ))}
-          </ul>
-        )}
+  const filmRequest = useCallback(showFilms, [filmName]);
+
+  return (
+    <div className="search-bar">
+      <h2 className="search-bar__title">find your movie</h2>
+      <div className="search-bar__search-container">
+        <Input
+          ref={ref}
+          classes="input-field"
+          placeholder="What do you want to watch?"
+          withLabel={false}
+          onChange={(e) => {
+            const value = e.target.value;
+            setFilmName(value);
+          }}
+        />
+        <Button
+          className={"search-bar"}
+          type={"submit"}
+          clickHandler={filmRequest}
+          text={"Search"}
+        />
       </div>
-    );
-  }
-}
+    </div>
+  );
+});
+
+SearchBar.displayName = "SearchBar";
+export default SearchBar;
