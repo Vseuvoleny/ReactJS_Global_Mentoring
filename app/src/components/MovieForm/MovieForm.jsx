@@ -6,13 +6,19 @@ import FormikControl from "../FormikControl/FormikControl";
 import "./MovieForm.scss";
 
 const modalSchema = Yup.object().shape({
-  title: Yup.string().required("Required"),
-  url: Yup.string().required("Required"),
-  genres: Yup.array().required("Required"),
-  date: Yup.date().required("Required"),
-  rating: Yup.number().required("Required"),
-  runtime: Yup.number().required("Required"),
-  description: Yup.string().notRequired(),
+  title: Yup.string().required("Заполните поле описания"),
+  url: Yup.string().required("Заполните поле описания"),
+  genres: Yup.array()
+    .min(1, "Выберите жанр")
+    .required("Заполните поле описания"),
+  release_date: Yup.date().required("Заполните поле описания"),
+  rating: Yup.number()
+    .typeError("Должно быть число")
+    .required("Заполните поле описания"),
+  runtime: Yup.number()
+    .typeError("Должно быть число")
+    .required("Заполните поле описания"),
+  overview: Yup.string().required("Заполните поле описания"),
 });
 
 const genres = [
@@ -26,10 +32,10 @@ const MovieForm = memo(() => {
   // TODO нужно будет получать из запроса данные по фильму
   // для случаев edit movie
   const initialValues = {
-    title: null,
+    title: "",
     url: "",
     genres: [],
-    release_date: null,
+    release_date: "",
     rating: "",
     runtime: "",
     overview: "",
@@ -39,9 +45,7 @@ const MovieForm = memo(() => {
     console.log("Submit form:", values);
   };
 
-  const onReset = (values) => {
-    console.log("Rest form");
-  };
+  const onReset = () => {};
 
   return (
     <Formik
@@ -50,7 +54,7 @@ const MovieForm = memo(() => {
       validationSchema={modalSchema}
       onReset={onReset}
     >
-      {(formik) => {
+      {({ values, handleChange, errors, touched }) => {
         return (
           <Form>
             <div className="form-container__inputs">
@@ -60,54 +64,66 @@ const MovieForm = memo(() => {
                   control="input"
                   title="title"
                   placeholder="Title"
-                  value={formik.values.title}
-                  onChange={formik.handleChange}
+                  value={values.title}
+                  onChange={handleChange}
+                  errors={errors.title}
                 />
+                {errors && touched.title && <div>{errors.title}</div>}
                 <FormikControl
                   name="url"
                   control="input"
                   title="url"
                   placeholder="https://"
-                  value={formik.values.url}
-                  onChange={formik.handleChange}
+                  value={values.url}
+                  onChange={handleChange}
+                  errors={errors.title}
                 />
+                {errors && touched.url && <div>{errors.url}</div>}
                 <FormikControl
                   options={genres}
-                  values={formik.values.genres}
+                  value={values.genres}
                   control="select"
                   placeholder="Select genre"
                   label="genre"
                   name="genres"
+                  errors={errors.title}
                 />
+                {errors && touched.genres && <div>{errors.genres}</div>}
               </div>
               <div className="left">
                 <FormikControl
-                  name="date"
+                  name="release_date"
                   control="input"
                   type="date"
                   title="release_date"
                   placeholder=""
-                  value={formik.values.release_date}
-                  onChange={formik.handleChange}
+                  value={values.release_date}
+                  onChange={handleChange}
+                  errors={errors.title}
                 />
-
+                {errors && touched.release_date && (
+                  <div>{errors.release_date}</div>
+                )}
                 <FormikControl
                   name="rating"
                   control="input"
                   title="rating"
                   placeholder="7.8"
-                  value={formik.values.rating}
-                  onChange={formik.handleChange}
+                  value={values.rating}
+                  onChange={handleChange}
+                  errors={errors.title}
                 />
-
+                {errors && touched.rating && <div>{errors.rating}</div>}
                 <FormikControl
                   name="runtime"
                   control="input"
                   title="runtime"
                   placeholder="minutes"
-                  value={formik.values.runtime}
-                  onChange={formik.handleChange}
+                  value={values.runtime}
+                  onChange={handleChange}
+                  errors={errors}
                 />
+                {errors && touched.runtime && <div>{errors.runtime}</div>}
               </div>
             </div>
 
@@ -115,9 +131,11 @@ const MovieForm = memo(() => {
               name="overview"
               control="textarea"
               title="overview"
-              value={formik.values.overview}
-              onChange={formik.handleChange}
+              value={values.overview}
+              onChange={handleChange}
+              errors={errors}
             />
+            {errors && touched.overview && <div>{errors.overview}</div>}
             <div className="buttons">
               <Button className="submit-form" type="submit" text="submit" />
               <Button className="reset-form" type="reset" text="reset" />
