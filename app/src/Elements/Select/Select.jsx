@@ -3,25 +3,17 @@ import { FieldProps } from "formik";
 import PropTypes from "prop-types";
 import RedTriangle from "../Icon/Icons/RedTriangle/RedTriangle";
 import Option from "./Option/Option";
+import { Field } from "formik";
 import "./Select.scss";
 
-const Select = ({ placeholder, label, options, onChange }) => {
+const Select = ({ placeholder, label, values, options, name, ...rest }) => {
   const [isListOpen, setListOpen] = useState(false);
-  const [option, setOption] = useState([1, 2]);
-
-  // const onChange = (opt) => {
-  //   setOption(
-  //     option.includes(opt)
-  //       ? option.filter((g) => g !== opt)
-  //       : (prev) => [...prev, opt]
-  //   );
-  // };
 
   return (
     <div className="select-input">
       <span className="label">{label}</span>
       <div className="select-input__box">
-        {option.length > 0 ? option.join(", ") : placeholder}
+        {values.length > 0 ? values.join(", ") : placeholder}
         <div className="expanded-list">
           <span
             onClick={() => setListOpen(!isListOpen)}
@@ -33,13 +25,25 @@ const Select = ({ placeholder, label, options, onChange }) => {
       </div>
       {isListOpen && (
         <div className="options">
-          {options.map((g) => (
-            <Option
-              key={g.id}
-              onClick={() => onChange(option)}
-              title={g.title}
-            />
-          ))}
+          <Field name={name}>
+            {({ field }) => {
+              return options.map((option) => {
+                return (
+                  <React.Fragment key={option.key}>
+                    <input
+                      type="checkbox"
+                      id={option.title}
+                      {...field}
+                      {...rest}
+                      value={option.title}
+                      checked={field.value.includes(option.title)}
+                    />
+                    <label htmlFor={option.title}>{option.title}</label>
+                  </React.Fragment>
+                );
+              });
+            }}
+          </Field>
         </div>
       )}
     </div>

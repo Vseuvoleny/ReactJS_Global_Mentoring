@@ -34,7 +34,6 @@ const MovieForm = memo(() => {
   return (
     <Formik initialValues={initialValues} onSubmit={onSubmit}>
       {(formik) => {
-        console.log(formik.values);
         return (
           <Form>
             <div className="form-container__inputs">
@@ -55,11 +54,11 @@ const MovieForm = memo(() => {
                 />
                 <FormikControl
                   options={genres}
+                  values={formik.values.genres}
                   control="select"
                   placeholder="Select genre"
                   label="genre"
-                  value={formik.values.genres}
-                  onChange={formik.setFieldValue}
+                  name="genres"
                 />
               </div>
               <div className="left">
