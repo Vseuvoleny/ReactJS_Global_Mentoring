@@ -1,11 +1,19 @@
-import React, { memo, useCallback, useState } from "react";
+import React, { memo } from "react";
+import { Formik, Form } from "formik";
 import Button from "../../Elements/Button/Button";
-import Input from "../../Elements/Input/Input";
-import Select from "../../Elements/Select/Select";
-import "./MovieForm.scss";
-import TextArea from "../../Elements/TextArea/TextArea";
-import { useFormik, Formik, Form, FormikProvider, Field } from "formik";
+import * as Yup from "yup";
 import FormikControl from "../FormikControl/FormikControl";
+import "./MovieForm.scss";
+
+const modalSchema = Yup.object().shape({
+  title: Yup.string().required("Required"),
+  url: Yup.string().required("Required"),
+  genres: Yup.array().required("Required"),
+  date: Yup.date().required("Required"),
+  rating: Yup.number().required("Required"),
+  runtime: Yup.number().required("Required"),
+  description: Yup.string().notRequired(),
+});
 
 const genres = [
   { title: "Crime", id: 1 },
@@ -31,14 +39,24 @@ const MovieForm = memo(() => {
     console.log("Submit form:", values);
   };
 
+  const onReset = (values) => {
+    console.log("Rest form");
+  };
+
   return (
-    <Formik initialValues={initialValues} onSubmit={onSubmit}>
+    <Formik
+      initialValues={initialValues}
+      onSubmit={onSubmit}
+      validationSchema={modalSchema}
+      onReset={onReset}
+    >
       {(formik) => {
         return (
           <Form>
             <div className="form-container__inputs">
               <div className="right">
                 <FormikControl
+                  name="title"
                   control="input"
                   title="title"
                   placeholder="Title"
@@ -46,6 +64,7 @@ const MovieForm = memo(() => {
                   onChange={formik.handleChange}
                 />
                 <FormikControl
+                  name="url"
                   control="input"
                   title="url"
                   placeholder="https://"
@@ -63,6 +82,7 @@ const MovieForm = memo(() => {
               </div>
               <div className="left">
                 <FormikControl
+                  name="date"
                   control="input"
                   type="date"
                   title="release_date"
@@ -72,6 +92,7 @@ const MovieForm = memo(() => {
                 />
 
                 <FormikControl
+                  name="rating"
                   control="input"
                   title="rating"
                   placeholder="7.8"
@@ -80,8 +101,9 @@ const MovieForm = memo(() => {
                 />
 
                 <FormikControl
-                  control={"input"}
-                  title={"runtime"}
+                  name="runtime"
+                  control="input"
+                  title="runtime"
                   placeholder="minutes"
                   value={formik.values.runtime}
                   onChange={formik.handleChange}
@@ -90,6 +112,7 @@ const MovieForm = memo(() => {
             </div>
 
             <FormikControl
+              name="overview"
               control="textarea"
               title="overview"
               value={formik.values.overview}
@@ -97,12 +120,7 @@ const MovieForm = memo(() => {
             />
             <div className="buttons">
               <Button className="submit-form" type="submit" text="submit" />
-              <Button
-                className="reset-form"
-                type="reset"
-                text="reset"
-                clickHandler={() => {}}
-              />
+              <Button className="reset-form" type="reset" text="reset" />
             </div>
           </Form>
         );

@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import { FieldProps } from "formik";
 import PropTypes from "prop-types";
 import RedTriangle from "../Icon/Icons/RedTriangle/RedTriangle";
 import Option from "./Option/Option";
 import { Field } from "formik";
 import "./Select.scss";
+
+// TODO
+// сделать закрытие через outsideclick
 
 const Select = ({ placeholder, label, values, options, name, ...rest }) => {
   const [isListOpen, setListOpen] = useState(false);
@@ -26,23 +28,21 @@ const Select = ({ placeholder, label, values, options, name, ...rest }) => {
       {isListOpen && (
         <div className="options">
           <Field name={name}>
-            {({ field }) => {
-              return options.map((option) => {
-                return (
-                  <React.Fragment key={option.key}>
-                    <input
-                      type="checkbox"
-                      id={option.title}
-                      {...field}
-                      {...rest}
-                      value={option.title}
-                      checked={field.value.includes(option.title)}
-                    />
-                    <label htmlFor={option.title}>{option.title}</label>
-                  </React.Fragment>
-                );
-              });
-            }}
+            {({ field }) =>
+              options.map((option) => (
+                <React.Fragment key={option.key}>
+                  <input
+                    type="checkbox"
+                    id={option.title}
+                    value={option.title}
+                    checked={field.value.includes(option.title)}
+                    {...field}
+                    {...rest}
+                  />
+                  <label htmlFor={option.title}>{option.title}</label>
+                </React.Fragment>
+              ))
+            }
           </Field>
         </div>
       )}
@@ -57,6 +57,3 @@ Select.propTypes = {
 };
 
 export default Select;
-
-// TODO
-// сделать закрытие через outsideclick
