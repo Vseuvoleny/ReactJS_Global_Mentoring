@@ -15,6 +15,8 @@ const Input = forwardRef(
     },
     ref
   ) => {
+    const { errors, touched } = rest;
+
     return (
       <div className={`input-container ${classes}`}>
         {withLabel && (
@@ -29,9 +31,11 @@ const Input = forwardRef(
           value={value}
           className={`input ${classes}`}
           onChange={onChange}
-          {...rest}
           autoComplete="off"
         />
+        {errors && touched.title && (
+          <div className={`error-message ${classes}`}>{errors.title}</div>
+        )}
       </div>
     );
   }

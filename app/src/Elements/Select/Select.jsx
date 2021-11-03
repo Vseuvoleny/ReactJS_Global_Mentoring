@@ -7,9 +7,9 @@ import "./Select.scss";
 // TODO
 // сделать закрытие через outsideclick
 
-const Select = ({ placeholder, label, value, options, name, error }) => {
+const Select = ({ placeholder, label, value, options, name, ...rest }) => {
   const [isListOpen, setListOpen] = useState(false);
-
+  const { errors, touched } = rest;
   return (
     <div className="select-input">
       <span className="label">{label}</span>
@@ -24,7 +24,9 @@ const Select = ({ placeholder, label, value, options, name, error }) => {
           </span>
         </div>
       </div>
-      <div>{error}</div>
+      {errors && touched.genres && (
+        <div className="error-message">{errors.genres}</div>
+      )}
       {isListOpen && <Option options={options} name={name} />}
     </div>
   );

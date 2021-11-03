@@ -5,7 +5,7 @@ import "./DeleteModal.scss";
 
 const DeleteModal = memo(() => {
   const onSubmit = (value) => {
-    console.log(value);
+    console.log("Submit to delet post", value);
   };
 
   return (

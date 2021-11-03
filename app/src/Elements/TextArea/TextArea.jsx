@@ -2,7 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./TextArea.scss";
 
-const TextArea = ({ title, value, onChange }) => {
+const TextArea = ({ title, value, onChange, ...rest }) => {
+  const { errors, touched } = rest;
   return (
     <div className="textarea-container">
       <label html={title} className="textarea-container__title">
@@ -15,6 +16,9 @@ const TextArea = ({ title, value, onChange }) => {
         value={value}
         onChange={onChange}
       ></textarea>
+      {errors && touched.overview && (
+        <div className="error-message">{errors.overview}</div>
+      )}
     </div>
   );
 };

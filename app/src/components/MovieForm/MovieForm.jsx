@@ -45,16 +45,14 @@ const MovieForm = memo(() => {
     console.log("Submit form:", values);
   };
 
-  const onReset = () => {};
-
   return (
     <Formik
       initialValues={initialValues}
       onSubmit={onSubmit}
       validationSchema={modalSchema}
-      onReset={onReset}
     >
-      {({ values, handleChange, errors, touched }) => {
+      {({ values, handleChange, ...rest }) => {
+        // TODO передалать верстку инпутов
         return (
           <Form>
             <div className="form-container__inputs">
@@ -66,9 +64,8 @@ const MovieForm = memo(() => {
                   placeholder="Title"
                   value={values.title}
                   onChange={handleChange}
-                  errors={errors.title}
+                  {...rest}
                 />
-                {errors && touched.title && <div>{errors.title}</div>}
                 <FormikControl
                   name="url"
                   control="input"
@@ -76,9 +73,8 @@ const MovieForm = memo(() => {
                   placeholder="https://"
                   value={values.url}
                   onChange={handleChange}
-                  errors={errors.title}
+                  {...rest}
                 />
-                {errors && touched.url && <div>{errors.url}</div>}
                 <FormikControl
                   options={genres}
                   value={values.genres}
@@ -86,9 +82,8 @@ const MovieForm = memo(() => {
                   placeholder="Select genre"
                   label="genre"
                   name="genres"
-                  errors={errors.title}
+                  {...rest}
                 />
-                {errors && touched.genres && <div>{errors.genres}</div>}
               </div>
               <div className="left">
                 <FormikControl
@@ -99,11 +94,8 @@ const MovieForm = memo(() => {
                   placeholder=""
                   value={values.release_date}
                   onChange={handleChange}
-                  errors={errors.title}
+                  {...rest}
                 />
-                {errors && touched.release_date && (
-                  <div>{errors.release_date}</div>
-                )}
                 <FormikControl
                   name="rating"
                   control="input"
@@ -111,9 +103,8 @@ const MovieForm = memo(() => {
                   placeholder="7.8"
                   value={values.rating}
                   onChange={handleChange}
-                  errors={errors.title}
+                  {...rest}
                 />
-                {errors && touched.rating && <div>{errors.rating}</div>}
                 <FormikControl
                   name="runtime"
                   control="input"
@@ -121,9 +112,8 @@ const MovieForm = memo(() => {
                   placeholder="minutes"
                   value={values.runtime}
                   onChange={handleChange}
-                  errors={errors}
+                  {...rest}
                 />
-                {errors && touched.runtime && <div>{errors.runtime}</div>}
               </div>
             </div>
 
@@ -133,9 +123,8 @@ const MovieForm = memo(() => {
               title="overview"
               value={values.overview}
               onChange={handleChange}
-              errors={errors}
+              {...rest}
             />
-            {errors && touched.overview && <div>{errors.overview}</div>}
             <div className="buttons">
               <Button className="submit-form" type="submit" text="submit" />
               <Button className="reset-form" type="reset" text="reset" />

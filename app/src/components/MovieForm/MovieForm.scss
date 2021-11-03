@@ -8,7 +8,9 @@
     column-gap: 30px;
     .right {
       width: 70%;
-
+      & > * {
+        height: 120px;
+      }
       & > *:not(:first-of-type) {
         margin-top: 30px;
       }
