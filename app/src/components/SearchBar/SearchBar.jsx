@@ -1,20 +1,22 @@
 import React, { forwardRef, useState, useCallback } from "react";
+import { useDispatch } from "react-redux";
+import { getFilms } from "../../Store/ActionCreator";
+import { useParams } from "react-router";
 import Button from "../../Elements/Button/Button";
 import Input from "../../Elements/Input/Input";
 import "./SearchBar.scss";
 
 const SearchBar = forwardRef((props, ref) => {
-  const [filmName, setFilmName] = useState("");
-  const [reqFilms, setreqFilms] = useState(undefined);
-
+  const [param, setSaram] = useState(useParams().queryParams);
+  const dispatch = useDispatch();
   const showFilms = async () => {
-    const URL = `http://localhost:4000/movies?sortOrder=desc&search=${filmName}&searchBy=title&limit=10`;
+    const URL = `http://localhost:4000/movies?sortOrder=desc&search=${param}&searchBy=title&limit=6`;
     const res = await fetch(URL);
-    const data = await res.json();
-    setreqFilms(data.data);
+    const { data } = await res.json();
+    dispatch(getFilms(data));
   };
 
-  const filmRequest = useCallback(showFilms, [filmName]);
+  const filmRequest = useCallback(showFilms, [param]);
 
   return (
     <div className="search-bar">
@@ -25,16 +27,14 @@ const SearchBar = forwardRef((props, ref) => {
           classes="input-field"
           placeholder="What do you want to watch?"
           withLabel={false}
-          onChange={(e) => {
-            const value = e.target.value;
-            setFilmName(value);
-          }}
+          value={param}
+          onChange={(e) => setSaram(e.target.value)}
         />
         <Button
-          className={"search-bar"}
-          type={"submit"}
+          className="search-bar"
+          type="submit"
           clickHandler={filmRequest}
-          text={"Search"}
+          text="Search"
         />
       </div>
     </div>

@@ -4,7 +4,11 @@ import PropTypes from "prop-types";
 import Nav from "../../Components/Nav/Nav";
 import MovieList from "../../Components/MovieList/MovieList";
 import Filters from "../../Components/Filters/Filters";
-import { asyncFetchFilms } from "../../Store/AsyncActions";
+import {
+  asyncFetchFilms,
+  asyncFetchFilmsByTitle,
+} from "../../Store/AsyncActions";
+import { useParams, useSearchParams } from "react-router-dom";
 import "./Main.scss";
 
 export const MainContext = React.createContext();
@@ -16,14 +20,14 @@ const Main = ({
   films,
   sortType,
   error,
-  genres,
 }) => {
   const rDispatch = useDispatch();
   const [isFiltersOpen, setisFiltersOpen] = useState(false);
-
+  const [searchParams, setSearchParams] = useSearchParams();
+  const genres = searchParams.get("genres");
   useEffect(() => {
-    rDispatch(asyncFetchFilms(sortType, genres));
-  }, [sortType, genres]);
+    rDispatch(asyncFetchFilms());
+  }, []);
 
   return (
     <MainContext.Provider
@@ -56,7 +60,6 @@ const mapStateToProps = ({ filmsStore }) => {
     films: filmsStore.films,
     sortType: filmsStore.sortType,
     error: filmsStore.error,
-    genres: filmsStore.genres,
   };
 };
 

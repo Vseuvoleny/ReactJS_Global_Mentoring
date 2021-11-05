@@ -9,9 +9,10 @@ import ModalContainer from "../Modal/ModalContainer";
 
 const Application = ({ setIsMovieDetailsOpened, isMovieDetailsOpened }) => {
   const dispatch = useDispatch();
-  const state = useSelector(({ filmsStore, modalStore }) => {
-    return { filmsStore, modalStore };
-  });
+  const state = useSelector(({ filmsStore, modalStore }) => ({
+    filmsStore,
+    modalStore,
+  }));
   const { filmsStore, modalStore } = state;
 
   return (
@@ -25,6 +26,7 @@ const Application = ({ setIsMovieDetailsOpened, isMovieDetailsOpened }) => {
         dispatch={dispatch}
         setIsMovieDetailsOpened={setIsMovieDetailsOpened}
       />
+
       <Footer />
       {modalStore.activeModal &&
         createPortal(
