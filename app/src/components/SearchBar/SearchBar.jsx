@@ -1,7 +1,7 @@
 import React, { forwardRef, useState, useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { getFilms } from "../../Store/ActionCreator";
-import { useParams } from "react-router";
+import { useParams, useNavigate } from "react-router-dom";
 import Button from "../../Elements/Button/Button";
 import Input from "../../Elements/Input/Input";
 import "./SearchBar.scss";
@@ -9,10 +9,14 @@ import "./SearchBar.scss";
 const SearchBar = forwardRef((props, ref) => {
   const [param, setSaram] = useState(useParams().queryParams);
   const dispatch = useDispatch();
-  const showFilms = async () => {
+  const navigate = useNavigate();
+
+  const showFilms = async (e) => {
+    e.preventDefault();
     const URL = `http://localhost:4000/movies?sortOrder=desc&search=${param}&searchBy=title&limit=6`;
     const res = await fetch(URL);
     const { data } = await res.json();
+    navigate(param);
     dispatch(getFilms(data));
   };
 
@@ -21,7 +25,7 @@ const SearchBar = forwardRef((props, ref) => {
   return (
     <div className="search-bar">
       <h2 className="search-bar__title">find your movie</h2>
-      <div className="search-bar__search-container">
+      <form className="search-bar__search-container" onSubmit={filmRequest}>
         <Input
           ref={ref}
           classes="input-field"
@@ -30,13 +34,8 @@ const SearchBar = forwardRef((props, ref) => {
           value={param}
           onChange={(e) => setSaram(e.target.value)}
         />
-        <Button
-          className="search-bar"
-          type="submit"
-          clickHandler={filmRequest}
-          text="Search"
-        />
-      </div>
+        <Button className="search-bar" type="submit" text="Search" />
+      </form>
     </div>
   );
 });

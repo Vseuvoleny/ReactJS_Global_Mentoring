@@ -14,8 +14,8 @@ const genres = [
 ];
 
 const Nav = memo(() => {
-  const [activeFilm, setActiveFilm] = useState(1);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [_activeFilm, setActiveFilm] = useState(1);
+  const [_searchParams, setSearchParams] = useSearchParams();
   const dispatch = useDispatch();
 
   return (
