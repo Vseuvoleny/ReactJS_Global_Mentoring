@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Application from "./Containers/Application/Applications";
 import { Provider } from "react-redux";
 import { store } from "./Store/CreateStore";
+import { ErrorPage } from "./Components/ErrorPage/ErrorPage";
 import {
   BrowserRouter as Router,
   Routes,
@@ -16,7 +17,7 @@ const App = () => {
     <Router>
       <Provider store={store}>
         <Routes>
-          <Route path="/" element={<Navigate replace to="/search" />} />
+          <Route path="/" exact element={<Navigate replace to="/search" />} />
           <Route
             path="/search"
             element={
@@ -36,6 +37,7 @@ const App = () => {
               }
             ></Route>
           </Route>
+          <Route path="/*" element={<ErrorPage />} />
         </Routes>
       </Provider>
     </Router>
