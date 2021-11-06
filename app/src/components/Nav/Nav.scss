@@ -2,21 +2,5 @@
   &__films {
     margin-top: 20px;
     display: flex;
-
-    .film {
-      cursor: pointer;
-      font-size: 16px;
-      font-weight: 500;
-      line-height: 20px;
-      text-transform: uppercase;
-
-      &.active {
-        border-bottom: 2px solid #f65261;
-      }
-    }
-
-    .film + .film {
-      margin-left: 30px;
-    }
   }
 }

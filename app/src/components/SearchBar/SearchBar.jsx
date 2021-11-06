@@ -13,11 +13,7 @@ const SearchBar = forwardRef((props, ref) => {
 
   const showFilms = async (e) => {
     e.preventDefault();
-    const URL = `http://localhost:4000/movies?sortOrder=desc&search=${param}&searchBy=title&limit=6`;
-    const res = await fetch(URL);
-    const { data } = await res.json();
     navigate(param);
-    dispatch(getFilms(data));
   };
 
   const filmRequest = useCallback(showFilms, [param]);
