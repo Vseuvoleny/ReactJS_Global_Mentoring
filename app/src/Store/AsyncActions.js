@@ -17,8 +17,9 @@ export const asyncFetchFilms = (params) => {
   };
 };
 
-const applyURL = ({ queryParams, genres }) => {
+const applyURL = ({ queryParams, genres, sortBy }) => {
   const params = queryParams ? `search=${queryParams}&searchBy=title` : "";
   const genre = genres ? `&filter=${genres}` : "";
-  return `${BASE_URL}/movies?${params}${genre}&sortOrder=desc&limit=6`;
+  const sorting = sortBy ? `&sortBy=${sortBy}` : "";
+  return `${BASE_URL}/movies?${params}${genre}${sorting}&sortOrder=desc&limit=6`;
 };

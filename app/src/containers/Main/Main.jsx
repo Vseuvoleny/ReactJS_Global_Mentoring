@@ -10,23 +10,17 @@ import "./Main.scss";
 
 export const MainContext = React.createContext();
 
-const Main = ({
-  state,
-  dispatch,
-  setIsMovieDetailsOpened,
-  films,
-  sortType,
-  error,
-}) => {
+const Main = ({ state, dispatch, setIsMovieDetailsOpened, films, error }) => {
   const rDispatch = useDispatch();
   const [isFiltersOpen, setisFiltersOpen] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const { queryParams } = useParams();
   const genres = searchParams.get("filter");
+  const sortBy = searchParams.get("sortBy");
 
   useEffect(() => {
-    rDispatch(asyncFetchFilms({ queryParams, genres }));
-  }, [queryParams, genres]);
+    rDispatch(asyncFetchFilms({ queryParams, genres, sortBy }));
+  }, [queryParams, genres, sortBy]);
 
   return (
     <MainContext.Provider
@@ -37,7 +31,8 @@ const Main = ({
         <div className="filters__container">
           <Nav genre={genres} setSearchParams={setSearchParams} />
           <Filters
-            sortType={sortType}
+            setSearchParams={setSearchParams}
+            sortBy={sortBy}
             isFiltersOpen={isFiltersOpen}
             setisFiltersOpen={setisFiltersOpen}
           />
