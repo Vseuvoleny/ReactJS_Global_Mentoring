@@ -6,3 +6,4 @@ export const GET_FILMS_ASYNC = "GET_FILMS_ASYNC";
 export const SET_FILTER = "SET_FILTER";
 export const SET_GENRES = "SET_GENRES";
 export const FILM_REQUEST_FAILURE = "FILM_REQUEST_FAILURE";
+export const MOVIE_BY_ID = "MOVIE_BY_ID";

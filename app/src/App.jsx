@@ -35,7 +35,7 @@ const App = () => {
                   setIsMovieDetailsOpened={setIsMovieDetailsOpened}
                 />
               }
-            ></Route>
+            />
           </Route>
           <Route path="/*" element={<ErrorPage />} />
         </Routes>

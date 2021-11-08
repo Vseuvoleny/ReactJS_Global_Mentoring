@@ -6,6 +6,7 @@ import {
   SET_FILTER,
   SET_GENRES,
   FILM_REQUEST_FAILURE,
+  MOVIE_BY_ID,
 } from "./ActionTypes";
 import { modalReducer } from "./ModalReducers";
 
@@ -30,6 +31,11 @@ function filmReducer(state = initialState, action) {
       return {
         ...state,
         genres: action.payload,
+      };
+    case MOVIE_BY_ID:
+      return {
+        ...state,
+        film: action.payload,
       };
     default:
       return state;

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { BASE_URL } from "../utils/const/const";
-import { getFilms, getErrorFromFetch } from "./ActionCreator";
+import { getFilms, getErrorFromFetch, getMovieById } from "./ActionCreator";
 
 export const asyncFetchFilms = (params) => {
   return (dispatch) => {
@@ -14,6 +14,17 @@ export const asyncFetchFilms = (params) => {
         console.warn(e.message ?? e);
         dispatch(getErrorFromFetch(e.message ?? e));
       });
+  };
+};
+
+export const asyncFetchMovie = (movieId) => {
+  return (dispatch) => {
+    axios
+      .get(`${BASE_URL}/movies/${movieId}`)
+      .then(({ data }) => {
+        dispatch(getMovieById(data));
+      })
+      .catch((e) => console.warn(e.message ?? e));
   };
 };
 

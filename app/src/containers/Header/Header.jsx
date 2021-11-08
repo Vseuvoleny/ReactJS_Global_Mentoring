@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import SearchBar from "../../Components/SearchBar/SearchBar";
 import Button from "../../Elements/Button/Button";
@@ -10,6 +10,8 @@ import { setApplyModal } from "../../Store/ActionCreator";
 import "./Header.scss";
 
 const Header = ({ isMovieDetailsOpened, setIsMovieDetailsOpened }) => {
+  const { filmsStore } = useSelector(({ filmsStore }) => ({ filmsStore }));
+  const { film } = filmsStore;
   const dispatch = useDispatch();
   const ref = useRef();
 
@@ -30,7 +32,7 @@ const Header = ({ isMovieDetailsOpened, setIsMovieDetailsOpened }) => {
               height="30"
               viewBox="0 0 29 30"
               onClick={() => {
-                setIsMovieDetailsOpened(null);
+                setIsMovieDetailsOpened(false);
               }}
             />
           ) : (
@@ -45,7 +47,18 @@ const Header = ({ isMovieDetailsOpened, setIsMovieDetailsOpened }) => {
           )}
         </div>
 
-        {isMovieDetailsOpened ? <MovieDetails /> : <SearchBar ref={ref} />}
+        {isMovieDetailsOpened ? (
+          <MovieDetails
+            img={film.poster_path}
+            title={film.title}
+            rating={film.vote_average}
+            year={film.release_date.split("-")[0]}
+            runtime={film.runtime}
+            overview={film.overview}
+          />
+        ) : (
+          <SearchBar ref={ref} />
+        )}
       </div>
     </header>
   );

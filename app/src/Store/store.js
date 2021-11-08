@@ -3,4 +3,5 @@ export const initialState = {
   sortType: "release_date",
   error: "",
   genres: "All",
+  film: undefined,
 };

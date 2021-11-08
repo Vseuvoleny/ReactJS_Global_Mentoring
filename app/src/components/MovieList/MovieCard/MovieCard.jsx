@@ -1,16 +1,25 @@
 import React, { useState, useContext, memo } from "react";
+import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 import CardControler from "../CardContoler/CardControler";
 import { MainContext } from "../../../Containers/Main/Main";
+import { asyncFetchMovie } from "../../../Store/AsyncActions";
 import "./MovieCard.scss";
 
 const MovieCard = memo(({ image, name, date, type, id }) => {
   const [isDropDawnOpen, setDropDawnOpen] = useState(false);
   const context = useContext(MainContext);
+  const rdispatch = useDispatch();
   const { state, setMovieListOpen, dispatch } = context;
 
   return (
-    <div className="card__item" onClick={() => setMovieListOpen(id)}>
+    <div
+      className="card__item"
+      onClick={() => {
+        setMovieListOpen(true);
+        rdispatch(asyncFetchMovie(id));
+      }}
+    >
       <picture className="card__image">
         <CardControler
           isDropDawnOpen={isDropDawnOpen}
