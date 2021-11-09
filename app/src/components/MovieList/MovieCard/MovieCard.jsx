@@ -6,7 +6,7 @@ import { MainContext } from "../../../Containers/Main/Main";
 import { asyncFetchMovie } from "../../../Store/AsyncActions";
 import "./MovieCard.scss";
 
-const MovieCard = memo(({ image, name, date, type, id }) => {
+const MovieCard = ({ image, name, date, type, id, setSearchParams }) => {
   const [isDropDawnOpen, setDropDawnOpen] = useState(false);
   const context = useContext(MainContext);
   const rdispatch = useDispatch();
@@ -16,8 +16,7 @@ const MovieCard = memo(({ image, name, date, type, id }) => {
     <div
       className="card__item"
       onClick={() => {
-        setMovieListOpen(true);
-        rdispatch(asyncFetchMovie(id));
+        setSearchParams({ movieId: id });
       }}
     >
       <picture className="card__image">
@@ -38,7 +37,7 @@ const MovieCard = memo(({ image, name, date, type, id }) => {
       </div>
     </div>
   );
-});
+};
 
 MovieCard.propTypes = {
   image: PropTypes.string,

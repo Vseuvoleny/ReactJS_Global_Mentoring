@@ -4,30 +4,30 @@ import PropTypes from "prop-types";
 import Nav from "../../Components/Nav/Nav";
 import MovieList from "../../Components/MovieList/MovieList";
 import Filters from "../../Components/Filters/Filters";
-import { asyncFetchFilms, asyncFetchMovie } from "../../Store/AsyncActions";
-import { useParams, useSearchParams } from "react-router-dom";
+import { asyncFetchFilms } from "../../Store/AsyncActions";
+import { useParams } from "react-router-dom";
 import "./Main.scss";
 
 export const MainContext = React.createContext();
 
-const Main = ({ state, dispatch, setIsMovieDetailsOpened, films, error }) => {
+const Main = ({
+  state,
+  dispatch,
+  setIsMovieDetailsOpened,
+  films,
+  error,
+  searchParams,
+  setSearchParams,
+}) => {
   const rDispatch = useDispatch();
   const [isFiltersOpen, setisFiltersOpen] = useState(false);
-  const [searchParams, setSearchParams] = useSearchParams();
   const { queryParams } = useParams();
   const genres = searchParams.get("filter");
   const sortBy = searchParams.get("sortBy");
-  const movieId = searchParams.get("movieId");
 
   useEffect(() => {
-    rDispatch(asyncFetchFilms({ queryParams, genres, sortBy, movieId }));
+    rDispatch(asyncFetchFilms({ queryParams, genres, sortBy }));
   }, [queryParams, genres, sortBy]);
-
-  useEffect(() => {
-    if (movieId) {
-      rDispatch(asyncFetchMovie(movieId));
-    }
-  }, [movieId]);
 
   return (
     <MainContext.Provider
@@ -44,7 +44,11 @@ const Main = ({ state, dispatch, setIsMovieDetailsOpened, films, error }) => {
             setisFiltersOpen={setisFiltersOpen}
           />
         </div>
-        {error ? error.message ?? error : <MovieList films={films} />}
+        {error ? (
+          error.message ?? error
+        ) : (
+          <MovieList films={films} setSearchParams={setSearchParams} />
+        )}
       </main>
     </MainContext.Provider>
   );

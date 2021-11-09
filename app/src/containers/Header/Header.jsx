@@ -7,32 +7,37 @@ import Title from "../../Elements/Title/Title";
 import SearchIcon from "../../Elements/Icon/Icons/SearchIcon/SearchIcon";
 import MovieDetails from "../../Components/MovieDetails/MovieDetails";
 import { setApplyModal } from "../../Store/ActionCreator";
+import { asyncFetchMovie } from "../../Store/AsyncActions";
 import "./Header.scss";
 
-const Header = ({ isMovieDetailsOpened, setIsMovieDetailsOpened }) => {
+const Header = ({
+  isMovieDetailsOpened,
+  setIsMovieDetailsOpened,
+  movieId,
+  setSearchParams,
+}) => {
   const { filmsStore } = useSelector(({ filmsStore }) => ({ filmsStore }));
-  const { film } = filmsStore;
   const dispatch = useDispatch();
   const ref = useRef();
 
   useEffect(() => {
-    if (isMovieDetailsOpened === null) {
-      ref.current.focus();
-    }
-  }, [isMovieDetailsOpened]);
+    dispatch(asyncFetchMovie(movieId));
+  }, [movieId]);
+
+  const { film } = filmsStore;
 
   return (
     <header className="header">
       <div className="header__container">
         <div className="header__title">
           <Title />
-          {isMovieDetailsOpened ? (
+          {movieId ? (
             <SearchIcon
-              width="29"
+              width="30"
               height="30"
-              viewBox="0 0 29 30"
+              viewBox="0 0 30 30"
               onClick={() => {
-                setIsMovieDetailsOpened(false);
+                setSearchParams({ movieId: {} });
               }}
             />
           ) : (
@@ -47,7 +52,7 @@ const Header = ({ isMovieDetailsOpened, setIsMovieDetailsOpened }) => {
           )}
         </div>
 
-        {isMovieDetailsOpened ? (
+        {film ? (
           <MovieDetails
             img={film.poster_path}
             title={film.title}
