@@ -5,19 +5,22 @@ import "./Input.scss";
 const Input = forwardRef(
   (
     {
+      classes,
       title,
       type = "text",
-      classes = "",
-      defaultValue = "",
+      value = "",
       withLabel = true,
+      onChange,
       ...rest
     },
     ref
   ) => {
+    const { errors, touched } = rest;
+
     return (
       <div className={`input-container ${classes}`}>
         {withLabel && (
-          <label htmlFor={title} className={`${classes} label`}>
+          <label htmlFor={title} className={`label ${classes}`}>
             {title}
           </label>
         )}
@@ -25,11 +28,14 @@ const Input = forwardRef(
           ref={ref}
           type={type}
           id={title}
-          defaultValue={defaultValue}
-          className={`${classes} input`}
-          {...rest}
+          value={value}
+          className={`input ${classes}`}
+          onChange={onChange}
           autoComplete="off"
         />
+        {errors && touched.title && (
+          <div className={`error-message ${classes}`}>{errors.title}</div>
+        )}
       </div>
     );
   }
@@ -39,8 +45,9 @@ Input.propTypes = {
   classes: PropTypes.string,
   title: PropTypes.string,
   type: PropTypes.string,
-  defaultValue: PropTypes.string,
+  withLabel: PropTypes.bool,
   value: PropTypes.string,
+  onChange: PropTypes.func,
 };
 
 export default memo(Input);

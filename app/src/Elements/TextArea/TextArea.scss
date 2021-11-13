@@ -1,3 +1,5 @@
+@import "../../styles/colors/colors.scss";
+
 .textarea-container {
   margin-bottom: 30px;
   &__title {
@@ -6,7 +8,7 @@
     line-height: 20px;
     letter-spacing: 1px;
     text-transform: uppercase;
-    color: #f65261;
+    color: $color-corral;
     opacity: 0.8;
   }
   &__textarea {
@@ -22,15 +24,19 @@
     padding: 18px;
     width: 100%;
     height: 197px;
-    color: #ffffff;
+    color: $color-white;
     font-size: 20px;
     line-height: 24px;
-    caret-color: #ffffff;
+    caret-color: $color-white;
     &::placeholder {
       font-size: 20px;
       line-height: 24px;
-      color: #ffffff;
+      color: $color-white;
       opacity: 0.3;
     }
+  }
+  .error-message {
+    padding-top: 4px;
+    color: $color-corral;
   }
 }

@@ -26,15 +26,15 @@ const SearchBar = forwardRef((props, ref) => {
           placeholder="What do you want to watch?"
           withLabel={false}
           onChange={(e) => {
-            const value = e.target.value;
+            const { value } = e.target;
             setFilmName(value);
           }}
         />
         <Button
-          className={"search-bar"}
-          type={"submit"}
+          className="search-bar"
+          type="submit"
           clickHandler={filmRequest}
-          text={"Search"}
+          text="Search"
         />
       </div>
     </div>
