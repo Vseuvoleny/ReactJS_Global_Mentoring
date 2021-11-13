@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input component should render Input component 1`] = `
+<div>
+  <div
+    class="input-container undefined"
+  >
+    <label
+      class="label undefined"
+    />
+    <input
+      autocomplete="off"
+      class="input undefined"
+      data-testid="input"
+      type="text"
+      value=""
+    />
+  </div>
+</div>
+`;

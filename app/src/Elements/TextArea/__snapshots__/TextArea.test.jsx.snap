@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextArea component should render TextArea component 1`] = `
+<div>
+  <div
+    class="textarea-container"
+  >
+    <label
+      class="textarea-container__title"
+    />
+    <textarea
+      class="textarea-container__textarea"
+      placeholder="Movie description"
+    />
+  </div>
+</div>
+`;

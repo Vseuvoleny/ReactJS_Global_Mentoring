@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Option component should render Option component with a list 1`] = `
+<div>
+  <div
+    class="option"
+  >
+    <label
+      class="option-label"
+    >
+      <input
+        class="option-checkbox"
+        type="checkbox"
+        value="title_1"
+      />
+      title_1
+    </label>
+    <label
+      class="option-label"
+    >
+      <input
+        class="option-checkbox"
+        type="checkbox"
+        value="title_2"
+      />
+      title_2
+    </label>
+    <label
+      class="option-label"
+    >
+      <input
+        class="option-checkbox"
+        type="checkbox"
+        value="title_3"
+      />
+      title_3
+    </label>
+    <label
+      class="option-label"
+    >
+      <input
+        class="option-checkbox"
+        type="checkbox"
+        value="title_4"
+      />
+      title_4
+    </label>
+  </div>
+</div>
+`;

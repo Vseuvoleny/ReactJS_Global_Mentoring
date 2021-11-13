@@ -1,4 +1,4 @@
-import React, { forwardRef, memo } from "react";
+import React, { forwardRef } from "react";
 import PropTypes from "prop-types";
 import "./Input.scss";
 
@@ -25,6 +25,7 @@ const Input = forwardRef(
           </label>
         )}
         <input
+          data-testid="input"
           ref={ref}
           type={type}
           id={title}
@@ -50,4 +51,4 @@ Input.propTypes = {
   onChange: PropTypes.func,
 };
 
-export default memo(Input);
+export default Input;
