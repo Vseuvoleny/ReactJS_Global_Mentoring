@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import MovieCard from "./MovieCard/MovieCard";
 import "./MovieList.scss";
 
-const MovieList = ({ films }) => {
+const MovieList = ({ films, setSearchParams }) => {
   return (
     <section className="cards__container">
       <span className="cards__counter">
@@ -12,6 +12,7 @@ const MovieList = ({ films }) => {
       <div className="cards__list">
         {films.map((f) => (
           <MovieCard
+            setSearchParams={setSearchParams}
             image={f.poster_path}
             name={f.title}
             key={f.id}

@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import SearchBar from "../../Components/SearchBar/SearchBar";
 import Button from "../../Elements/Button/Button";
@@ -7,30 +7,37 @@ import Title from "../../Elements/Title/Title";
 import SearchIcon from "../../Elements/Icon/Icons/SearchIcon/SearchIcon";
 import MovieDetails from "../../Components/MovieDetails/MovieDetails";
 import { setApplyModal } from "../../Store/ActionCreator";
+import { asyncFetchMovie } from "../../Store/AsyncActions";
 import "./Header.scss";
 
-const Header = ({ isMovieDetailsOpened, setIsMovieDetailsOpened }) => {
+const Header = ({
+  isMovieDetailsOpened,
+  setIsMovieDetailsOpened,
+  movieId,
+  setSearchParams,
+}) => {
+  const { filmsStore } = useSelector(({ filmsStore }) => ({ filmsStore }));
   const dispatch = useDispatch();
   const ref = useRef();
 
   useEffect(() => {
-    if (isMovieDetailsOpened === null) {
-      ref.current.focus();
-    }
-  }, [isMovieDetailsOpened]);
+    dispatch(asyncFetchMovie(movieId));
+  }, [movieId, dispatch]);
+
+  const { film } = filmsStore;
 
   return (
     <header className="header">
       <div className="header__container">
         <div className="header__title">
           <Title />
-          {isMovieDetailsOpened ? (
+          {movieId ? (
             <SearchIcon
-              width="29"
+              width="30"
               height="30"
-              viewBox="0 0 29 30"
+              viewBox="0 0 30 30"
               onClick={() => {
-                setIsMovieDetailsOpened(null);
+                setSearchParams({ movieId: {} });
               }}
             />
           ) : (
@@ -45,7 +52,18 @@ const Header = ({ isMovieDetailsOpened, setIsMovieDetailsOpened }) => {
           )}
         </div>
 
-        {isMovieDetailsOpened ? <MovieDetails /> : <SearchBar ref={ref} />}
+        {film ? (
+          <MovieDetails
+            img={film.poster_path}
+            title={film.title}
+            rating={film.vote_average}
+            year={film.release_date.split("-")[0]}
+            runtime={film.runtime}
+            overview={film.overview}
+          />
+        ) : (
+          <SearchBar ref={ref} />
+        )}
       </div>
     </header>
   );

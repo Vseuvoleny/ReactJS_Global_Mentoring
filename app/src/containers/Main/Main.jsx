@@ -5,6 +5,7 @@ import Nav from "../../Components/Nav/Nav";
 import MovieList from "../../Components/MovieList/MovieList";
 import Filters from "../../Components/Filters/Filters";
 import { asyncFetchFilms } from "../../Store/AsyncActions";
+import { useParams } from "react-router-dom";
 import "./Main.scss";
 
 export const MainContext = React.createContext();
@@ -14,16 +15,19 @@ const Main = ({
   dispatch,
   setIsMovieDetailsOpened,
   films,
-  sortType,
   error,
-  genres,
+  searchParams,
+  setSearchParams,
 }) => {
   const rDispatch = useDispatch();
   const [isFiltersOpen, setisFiltersOpen] = useState(false);
+  const { queryParams } = useParams();
+  const genres = searchParams.get("filter");
+  const sortBy = searchParams.get("sortBy");
 
   useEffect(() => {
-    rDispatch(asyncFetchFilms(sortType, genres));
-  }, [sortType, genres]);
+    rDispatch(asyncFetchFilms({ queryParams, genres, sortBy }));
+  }, [queryParams, genres, sortBy]);
 
   return (
     <MainContext.Provider
@@ -32,14 +36,19 @@ const Main = ({
       <main className="main">
         <div className="hr"></div>
         <div className="filters__container">
-          <Nav genres={genres} />
+          <Nav genre={genres} setSearchParams={setSearchParams} />
           <Filters
-            sortType={sortType}
+            setSearchParams={setSearchParams}
+            sortBy={sortBy}
             isFiltersOpen={isFiltersOpen}
             setisFiltersOpen={setisFiltersOpen}
           />
         </div>
-        {error ? error.message ?? error : <MovieList films={films} />}
+        {error ? (
+          error.message ?? error
+        ) : (
+          <MovieList films={films} setSearchParams={setSearchParams} />
+        )}
       </main>
     </MainContext.Provider>
   );
@@ -56,7 +65,6 @@ const mapStateToProps = ({ filmsStore }) => {
     films: filmsStore.films,
     sortType: filmsStore.sortType,
     error: filmsStore.error,
-    genres: filmsStore.genres,
   };
 };
 

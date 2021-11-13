@@ -1,0 +1,14 @@
+.film {
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  text-transform: uppercase;
+
+  &.active {
+    border-bottom: 2px solid #f65261;
+  }
+  & + & {
+    margin-left: 30px;
+  }
+}

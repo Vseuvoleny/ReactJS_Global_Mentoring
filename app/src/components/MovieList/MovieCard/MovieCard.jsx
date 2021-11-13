@@ -1,16 +1,24 @@
 import React, { useState, useContext, memo } from "react";
+import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 import CardControler from "../CardContoler/CardControler";
 import { MainContext } from "../../../Containers/Main/Main";
+import { asyncFetchMovie } from "../../../Store/AsyncActions";
 import "./MovieCard.scss";
 
-const MovieCard = memo(({ image, name, date, type, id }) => {
+const MovieCard = ({ image, name, date, type, id, setSearchParams }) => {
   const [isDropDawnOpen, setDropDawnOpen] = useState(false);
   const context = useContext(MainContext);
+  const rdispatch = useDispatch();
   const { state, setMovieListOpen, dispatch } = context;
 
   return (
-    <div className="card__item" onClick={() => setMovieListOpen(id)}>
+    <div
+      className="card__item"
+      onClick={() => {
+        setSearchParams({ movieId: id });
+      }}
+    >
       <picture className="card__image">
         <CardControler
           isDropDawnOpen={isDropDawnOpen}
@@ -29,7 +37,7 @@ const MovieCard = memo(({ image, name, date, type, id }) => {
       </div>
     </div>
   );
-});
+};
 
 MovieCard.propTypes = {
   image: PropTypes.string,

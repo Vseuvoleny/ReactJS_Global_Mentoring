@@ -1,36 +1,43 @@
-import React, { useState, memo } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setGenres } from "../../Store/ActionCreator";
+import { NavLink } from "./NavLink/NavLink";
+import { Link } from "react-router-dom";
 import "./Nav.scss";
 
-const Nav = memo(() => {
-  const [activeFilm, setActiveFilm] = useState(1);
-  const dispatch = useDispatch();
+const genres = [
+  { title: "All", id: 1 },
+  { title: "Documentary", id: 2 },
+  { title: "Comedy", id: 3 },
+  { title: "Horror", id: 4 },
+  { title: "Crime", id: 5 },
+];
 
-  const genres = [
-    { title: "All", id: 1 },
-    { title: "Documentary", id: 2 },
-    { title: "Comedy", id: 3 },
-    { title: "Horror", id: 4 },
-    { title: "Crime", id: 5 },
-  ];
+const Nav = ({ genre, setSearchParams }) => {
+  const [activeLink, setLink] = useState(genre);
+  const dispatch = useDispatch();
 
   return (
     <ul className="films-category__films">
-      {genres.map((f) => (
-        <li
-          key={f.id}
-          className={`film ${activeFilm === f.id ? "active" : ""}`}
-          onClick={() => {
-            setActiveFilm(f.id);
-            dispatch(setGenres(f.title));
-          }}
-        >
-          {f.title}
-        </li>
-      ))}
+      {genres.map((g) => {
+        const title = g.title.toLowerCase();
+        return (
+          <NavLink
+            title={title}
+            key={g.id}
+            clickHandler={() => {
+              setSearchParams(
+                title === "all" ? {} : { filter: title.toLowerCase() }
+              );
+              setLink(title);
+              dispatch(setGenres(title));
+            }}
+            activeLink={activeLink}
+          />
+        );
+      })}
     </ul>
   );
-});
+};
 
 export default Nav;
