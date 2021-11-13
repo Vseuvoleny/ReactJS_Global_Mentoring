@@ -1,3 +1,5 @@
+@import "../../styles/colors/colors.scss";
+
 .input-container {
   & > * {
     display: block;
@@ -6,9 +8,9 @@
     font-weight: 600;
     font-size: 16px;
     line-height: 20px;
-    letter-spacing: 1;
+    letter-spacing: 1px;
     text-transform: uppercase;
-    color: #f65261;
+    color: $color-corral;
     margin-bottom: 13px;
   }
   .input {
@@ -16,7 +18,7 @@
     border-radius: 4px;
     font-size: 20px;
     line-height: 24px;
-    color: #ffffff;
+    color: $color-white;
     padding: 18px;
     outline: none;
     border: 0;
@@ -28,5 +30,10 @@
       background-image: url("../../assets/svg/calendar.svg");
       background-size: contain;
     }
+  }
+
+  .error-message {
+    padding-top: 4px;
+    color: $color-corral;
   }
 }

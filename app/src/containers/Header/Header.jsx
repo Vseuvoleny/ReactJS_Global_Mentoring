@@ -22,7 +22,7 @@ const Header = ({
 
   useEffect(() => {
     dispatch(asyncFetchMovie(movieId));
-  }, [movieId]);
+  }, [movieId, dispatch]);
 
   const { film } = filmsStore;
 

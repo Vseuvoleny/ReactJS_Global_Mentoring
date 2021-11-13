@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useRouteMatch } from "react-router-dom";
 import "./NavLink.scss";
 
 export const NavLink = ({ clickHandler, title, activeLink }) => {

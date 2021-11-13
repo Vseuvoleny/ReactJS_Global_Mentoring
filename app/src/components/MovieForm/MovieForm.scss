@@ -8,7 +8,9 @@
     column-gap: 30px;
     .right {
       width: 70%;
-
+      & > * {
+        height: 120px;
+      }
       & > *:not(:first-of-type) {
         margin-top: 30px;
       }
@@ -20,29 +22,29 @@
       }
     }
   }
-  .buttons {
-    display: flex;
-    align-self: flex-end;
-    flex-direction: row-reverse;
-    .submit-form {
-      margin-left: 13px;
-    }
-    .submit-form__button {
-      background: #f65261;
-      border-radius: 4px;
-      padding: 16px 48px;
-      font-size: 20px;
-      line-height: 24px;
-      color: #ffffff;
-    }
-    .reset-form__button {
-      border: 1.5px solid #f65261;
-      border-radius: 4px;
-      background: #232323;
-      padding: 16px 48px;
-      font-size: 20px;
-      line-height: 24px;
-      color: #f65261;
-    }
+}
+
+.buttons {
+  display: flex;
+  align-self: flex-end;
+  flex-direction: row-reverse;
+  column-gap: 13px;
+
+  .submit-form__button {
+    background: #f65261;
+    border-radius: 4px;
+    padding: 16px 48px;
+    font-size: 20px;
+    line-height: 24px;
+    color: #ffffff;
+  }
+  .reset-form__button {
+    border: 1.5px solid #f65261;
+    border-radius: 4px;
+    background: #232323;
+    padding: 16px 48px;
+    font-size: 20px;
+    line-height: 24px;
+    color: #f65261;
   }
 }

@@ -1,19 +1,31 @@
-import React, { memo } from "react";
+import React from "react";
 import PropTypes from "prop-types";
+import { Field } from "formik";
 import "./Option.scss";
 
-const Option = memo(({ onClick, classes = "", title }) => {
+const Option = ({ options, name }) => {
   return (
-    <label className={`option-label ${classes}`} onClick={onClick}>
-      {title}
-    </label>
+    <div className="option">
+      {options.map((option) => {
+        return (
+          <label key={option.id} className="option-label">
+            <Field
+              type="checkbox"
+              name={name}
+              value={option.title}
+              className="option-checkbox"
+            />
+            {option.title}
+          </label>
+        );
+      })}
+    </div>
   );
-});
+};
 
 Option.propTypes = {
-  onClick: PropTypes.func,
-  classes: PropTypes.string,
-  title: PropTypes.string,
+  options: PropTypes.array,
+  name: PropTypes.string,
 };
 
 export default Option;

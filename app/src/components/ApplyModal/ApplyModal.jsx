@@ -1,6 +1,7 @@
 import React from "react";
 import MovieForm from "../MovieForm/MovieForm";
 import "./ApplyModal.scss";
+
 const ApplyModal = () => {
   return (
     <section className="apply-modal">

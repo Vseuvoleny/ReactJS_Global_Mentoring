@@ -1,3 +1,5 @@
+@import "../../styles/colors/colors.scss";
+
 .select-input {
   position: relative;
   z-index: 1;
@@ -18,7 +20,9 @@
     opacity: 0.8;
     border-radius: 4px;
     padding: 18px 0 18px 18px;
+
     .expanded-list {
+      z-index: 20;
       &__icon {
         right: 19px;
         top: 50%;
@@ -43,5 +47,9 @@
     .option + .option {
       margin-top: 18px;
     }
+  }
+  .error-message {
+    padding-top: 4px;
+    color: $color-corral;
   }
 }

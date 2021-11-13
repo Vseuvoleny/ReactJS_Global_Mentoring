@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setGenres } from "../../Store/ActionCreator";
 import { NavLink } from "./NavLink/NavLink";
+import { Link } from "react-router-dom";
 import "./Nav.scss";
 
 const genres = [
@@ -15,6 +16,7 @@ const genres = [
 const Nav = ({ genre, setSearchParams }) => {
   const [activeLink, setLink] = useState(genre);
   const dispatch = useDispatch();
+
   return (
     <ul className="films-category__films">
       {genres.map((g) => {
