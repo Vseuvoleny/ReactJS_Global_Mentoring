@@ -1,22 +1,19 @@
 import React, { forwardRef, useState, useCallback } from "react";
-import { useDispatch } from "react-redux";
-import { getFilms } from "../../Store/ActionCreator";
 import { useParams, useNavigate } from "react-router-dom";
 import Button from "../../Elements/Button/Button";
 import Input from "../../Elements/Input/Input";
 import "./SearchBar.scss";
 
-const SearchBar = forwardRef((props, ref) => {
+const SearchBar = forwardRef((_props, ref) => {
   const [param, setSaram] = useState(useParams().queryParams);
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const showFilms = async (e) => {
+  const showFilms = (e) => {
     e.preventDefault();
     navigate(param);
   };
 
-  const filmRequest = useCallback(showFilms, [param]);
+  const filmRequest = useCallback(showFilms, [param, navigate]);
 
   return (
     <div className="search-bar">

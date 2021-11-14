@@ -1,15 +1,16 @@
-import React, { useCallback, memo } from "react";
+import React, { memo } from "react";
 import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 import ApplyModal from "../../Components/ApplyModal/ApplyModal";
 import EditModal from "../../Components/EditModal/EditModal";
 import DeleteModal from "../../Components/DeleteModal/DeleteModal";
 import { APPLY_MODAL, EDIT_MODAL, DELETE_MODAL } from "../../Store/ActionTypes";
-import "./ModalContainer.scss";
 import { setInactiveModal } from "../../Store/ActionCreator";
+import "./ModalContainer.scss";
 
 const ModalContainer = memo(({ modalStore }) => {
   const dispatch = useDispatch();
+
   const defineModal = (modalType) => {
     switch (modalType) {
       case APPLY_MODAL:

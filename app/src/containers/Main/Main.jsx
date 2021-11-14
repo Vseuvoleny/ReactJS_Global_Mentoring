@@ -27,7 +27,7 @@ const Main = ({
 
   useEffect(() => {
     rDispatch(asyncFetchFilms({ queryParams, genres, sortBy }));
-  }, [queryParams, genres, sortBy]);
+  }, [queryParams, genres, sortBy, rDispatch]);
 
   return (
     <MainContext.Provider

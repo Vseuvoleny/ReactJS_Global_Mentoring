@@ -6,7 +6,7 @@ const MovieDetails = memo(({ img, title, rating, year, runtime, overview }) => {
   return (
     <section className="movie-details">
       <picture className="movie-details__image">
-        <img src={img} alt="" width={323} height={486} />
+        <img src={img} alt={title} width={323} height={486} />
       </picture>
       <section className="movie-details__description">
         <div className="movie-details__title">
@@ -29,6 +29,10 @@ const MovieDetails = memo(({ img, title, rating, year, runtime, overview }) => {
 MovieDetails.propTypes = {
   title: PropTypes.string,
   img: PropTypes.string,
+  rating: PropTypes.string,
+  year: PropTypes.string,
+  runtime: PropTypes.string,
+  overview: PropTypes.string,
 };
 
 export default MovieDetails;

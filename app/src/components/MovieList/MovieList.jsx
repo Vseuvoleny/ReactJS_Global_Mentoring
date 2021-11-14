@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import MovieCard from "./MovieCard/MovieCard";
 import "./MovieList.scss";
@@ -34,6 +34,7 @@ MovieList.propTypes = {
     type: PropTypes.string,
     id: PropTypes.number,
   }),
+  setSearchParams: PropTypes.func,
 };
 
 export default MovieList;

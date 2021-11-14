@@ -1,7 +1,7 @@
-import React from "react";
+import React, { memo } from "react";
 import Title from "../../Elements/Title/Title";
 
-const Footer = () => {
+const Footer = memo(() => {
   const style = {
     padding: "23px 0",
     background: "#424242",
@@ -12,6 +12,6 @@ const Footer = () => {
       <Title />
     </footer>
   );
-};
+});
 
 export default Footer;

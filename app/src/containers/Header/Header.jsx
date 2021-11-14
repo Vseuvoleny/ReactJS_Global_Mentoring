@@ -10,12 +10,7 @@ import { setApplyModal } from "../../Store/ActionCreator";
 import { asyncFetchMovie } from "../../Store/AsyncActions";
 import "./Header.scss";
 
-const Header = ({
-  isMovieDetailsOpened,
-  setIsMovieDetailsOpened,
-  movieId,
-  setSearchParams,
-}) => {
+const Header = ({ movieId, setSearchParams }) => {
   const { filmsStore } = useSelector(({ filmsStore }) => ({ filmsStore }));
   const dispatch = useDispatch();
   const ref = useRef();
@@ -70,7 +65,8 @@ const Header = ({
 };
 
 Header.propTypes = {
-  isMovieDetailsOpened: PropTypes.bool,
+  movieId: PropTypes.number,
+  setSearchParams: PropTypes.func,
 };
 
 export default Header;
