@@ -33,6 +33,7 @@ const Input = forwardRef(
           className={`input ${classes}`}
           onChange={onChange}
           autoComplete="off"
+          {...rest}
         />
         {errors && touched.title && (
           <div className={`error-message ${classes}`}>{errors.title}</div>
