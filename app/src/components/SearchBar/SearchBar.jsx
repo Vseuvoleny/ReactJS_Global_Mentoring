@@ -7,7 +7,7 @@ import "./SearchBar.scss";
 const SearchBar = forwardRef((_props, ref) => {
   const [param, setSaram] = useState(useParams().queryParams);
   const navigate = useNavigate();
-  console.log(param);
+
   const showFilms = (e) => {
     e.preventDefault();
     navigate(param);

@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Searchbar component should render SearchBar component 1`] = `
+<div>
+  <div
+    class="search-bar"
+  >
+    <h2
+      class="search-bar__title"
+    >
+      find your movie
+    </h2>
+    <form
+      class="search-bar__search-container"
+    >
+      <div
+        class="input-container input-field"
+      >
+        <input
+          autocomplete="off"
+          class="input input-field"
+          data-testid="input"
+          placeholder="What do you want to watch?"
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        class="search-bar"
+      >
+        <button
+          class="search-bar__button filled"
+          type="submit"
+        >
+          Search
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+`;
