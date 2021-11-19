@@ -1,10 +1,10 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import Filters from "./Filters";
 import userEvent from "@testing-library/user-event";
 
 describe("Filter component", () => {
-  test("should render Filter component with opened filters ", () => {
+  test("should render Filter component with opened filters", () => {
     const { container, getByText, getAllByText } = render(
       <Filters isFiltersOpen={true} />
     );

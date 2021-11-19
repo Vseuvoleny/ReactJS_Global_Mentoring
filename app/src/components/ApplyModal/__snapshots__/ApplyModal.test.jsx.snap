@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ApplyModal component should return MovieForm 1`] = `
+<div>
+  <section
+    class="apply-modal"
+  >
+    <span
+      class="apply-modal__title"
+    >
+      add movie
+    </span>
+    <div>
+      Movie Form
+    </div>
+  </section>
+</div>
+`;

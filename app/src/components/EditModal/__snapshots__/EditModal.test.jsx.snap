@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EditModal component should return MovieForm 1`] = `
+<div>
+  <section
+    class="edit-modal"
+  >
+    <span
+      class="edit-modal__title"
+    >
+      edit movie
+    </span>
+    <div>
+      Movie Form
+    </div>
+  </section>
+</div>
+`;
