@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieDetails component should render component 1`] = `
+<div>
+  <section
+    class="movie-details"
+  >
+    <picture
+      class="movie-details__image"
+    >
+      <img
+        alt="Movie title"
+        height="486"
+        src="./movies.jpeg"
+        width="323"
+      />
+    </picture>
+    <section
+      class="movie-details__description"
+    >
+      <div
+        class="movie-details__title"
+      >
+        <span
+          class="name"
+        >
+          Movie title
+        </span>
+        <span
+          class="rate"
+        >
+          <span>
+            5
+          </span>
+        </span>
+      </div>
+      <div
+        class="movie-details__genre"
+      >
+        Action & Adventure
+      </div>
+      <div
+        class="movie-details__year"
+      >
+        <span
+          class="year"
+        >
+          2011
+        </span>
+        <span
+          class="timeing"
+        >
+          120
+        </span>
+      </div>
+      <div
+        class="movie-details__plot"
+      >
+        Movie overwiev
+      </div>
+    </section>
+  </section>
+</div>
+`;
