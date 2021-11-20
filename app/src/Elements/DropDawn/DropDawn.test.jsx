@@ -2,9 +2,8 @@ import React from "react";
 import { createStore } from "redux";
 import { modalReducer } from "../../Store/ModalReducers";
 import { Provider } from "react-redux";
-import { render, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import DropDawn from "./DropDawn";
-import userEvent from "@testing-library/user-event";
 
 const renderWithRedux = (
   component,
@@ -19,34 +18,28 @@ const renderWithRedux = (
 describe("Dropdawn element", () => {
   test("should render componenent", () => {
     const handleClick = jest.fn();
-    const { getByText } = renderWithRedux(
+    const { getByText, container } = renderWithRedux(
       <DropDawn setDropDawnOpen={handleClick} />
     );
     expect(getByText(/Edit/i)).toBeInTheDocument();
     expect(getByText(/Delete/i)).toBeInTheDocument();
+    expect(container).toMatchSnapshot();
   });
   test("should change type modal", () => {
-    const handleClick = jest.fn();
+    const initialState = {
+      initialState: {
+        activeModal: "",
+      },
+    };
     const typeEdit = jest.fn(
       () => (initialState.initialState.activeModal = "EDIT_MODAL")
     );
     const typeDelete = jest.fn(
       () => (initialState.initialState.activeModal = "DELETE_MODAL")
     );
-    const initialState = {
-      initialState: {
-        activeModal: "",
-      },
-    };
-
-    const { getByText } = renderWithRedux(
-      <DropDawn setDropDawnOpen={handleClick} />,
-      initialState
-    );
-    getByText(/Edit/i).onclick(() => typeEdit());
-
-    userEvent.click(getByText(/Edit/i));
-    console.log(initialState);
-    expect(initialState.activeModal).toBe('"EDIT_MODAL"');
+    typeDelete();
+    expect(initialState.initialState.activeModal).toBe("DELETE_MODAL");
+    typeEdit();
+    expect(initialState.initialState.activeModal).toBe("EDIT_MODAL");
   });
 });

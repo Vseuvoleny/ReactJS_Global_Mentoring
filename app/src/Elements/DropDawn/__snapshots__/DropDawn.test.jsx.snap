@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dropdawn element should render componenent 1`] = `
+<div>
+  <div
+    class="dropdawn__container"
+  >
+    <svg
+      class="close_icon"
+      height="13"
+      role="img"
+      viewBox="0 0 12 13"
+      width="12"
+    >
+      <path
+        d="M1.09677 1.59464L10.9029 11.6236"
+        stroke="white"
+        stroke-linecap="round"
+      />
+      <path
+        d="M10.9032 1.59464L1.0971 11.6236"
+        stroke="white"
+        stroke-linecap="round"
+      />
+    </svg>
+    <div
+      class="control"
+    >
+      Edit
+    </div>
+    <div
+      class="control"
+    >
+      Delete
+    </div>
+  </div>
+</div>
+`;
