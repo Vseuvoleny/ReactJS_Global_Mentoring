@@ -1,11 +1,15 @@
+@import "../../styles/colors/colors.scss";
+
 .form-container {
   display: flex;
   flex-direction: column;
   margin-top: 40px;
+
   &__inputs {
     display: flex;
     align-items: flex-start;
     column-gap: 30px;
+
     .right {
       width: 70%;
       & > * {
@@ -15,6 +19,7 @@
         margin-top: 30px;
       }
     }
+
     .left {
       width: 30%;
       & > *:not(:first-of-type) {
@@ -30,21 +35,21 @@
   flex-direction: row-reverse;
   column-gap: 13px;
 
-  .submit-form__button {
-    background: #f65261;
+  .submit_form__button {
+    background: $color-corral;
     border-radius: 4px;
     padding: 16px 48px;
     font-size: 20px;
     line-height: 24px;
-    color: #ffffff;
+    color: $color-white;
   }
-  .reset-form__button {
-    border: 1.5px solid #f65261;
+  .reset_form__button {
+    border: 1.5px solid $color-corral;
     border-radius: 4px;
-    background: #232323;
+    background: $color-black;
     padding: 16px 48px;
     font-size: 20px;
     line-height: 24px;
-    color: #f65261;
+    color: $color-corral;
   }
 }

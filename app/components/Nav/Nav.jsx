@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { setGenres } from "../../Store/ActionCreator";
+import { setGenres } from "../../store/ActionCreator";
 import { NavLink } from "./NavLink/NavLink";
 import classes from "./Nav.module.scss";
 

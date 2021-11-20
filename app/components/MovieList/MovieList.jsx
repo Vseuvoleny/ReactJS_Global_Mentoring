@@ -1,15 +1,15 @@
-import React, { useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import MovieCard from "./MovieCard/MovieCard";
-import "./MovieList.scss";
+import classes from "./MovieList.module.scss";
 
 const MovieList = ({ films, setSearchParams }) => {
   return (
-    <section className="cards__container">
-      <span className="cards__counter">
+    <section className={classes.cards__container}>
+      <span className={classes.cards__counter}>
         <span>{films.length}</span> movies found
       </span>
-      <div className="cards__list">
+      <div className={classes.cards__list}>
         {films.map((f) => (
           <MovieCard
             setSearchParams={setSearchParams}

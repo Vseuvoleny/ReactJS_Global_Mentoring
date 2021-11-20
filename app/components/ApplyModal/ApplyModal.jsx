@@ -1,14 +1,14 @@
-import React from "react";
+import React, { memo } from "react";
 import MovieForm from "../MovieForm/MovieForm";
-import "./ApplyModal.scss";
+import classes from "./ApplyModal.module.scss";
 
-const ApplyModal = () => {
+const ApplyModal = memo(() => {
   return (
-    <section className="apply-modal">
-      <span className="apply-modal__title">add movie</span>
+    <section className={classes.apply_modal}>
+      <span className={classes.apply_modal__title}>add movie</span>
       <MovieForm />
     </section>
   );
-};
+});
 
 export default ApplyModal;

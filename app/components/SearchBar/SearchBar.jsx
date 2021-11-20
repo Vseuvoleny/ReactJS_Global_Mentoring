@@ -1,7 +1,7 @@
 import React, { forwardRef, useState, useCallback } from "react";
 import Button from "../../elements/Button/Button";
 import Input from "../../elements/Input/Input";
-import "./SearchBar.module.scss";
+import classes from "./SearchBar.module.scss";
 
 const SearchBar = forwardRef((props, ref) => {
   const [param, setSaram] = useState();
@@ -14,18 +14,21 @@ const SearchBar = forwardRef((props, ref) => {
   const filmRequest = useCallback(showFilms, [param]);
 
   return (
-    <div className="search-bar">
-      <h2 className="search-bar__title">find your movie</h2>
-      <form className="search-bar__search-container" onSubmit={filmRequest}>
+    <div className={classes.search_bar}>
+      <h2 className={classes.search_bar__title}>find your movie</h2>
+      <form
+        className={classes.search_bar__search_container}
+        onSubmit={filmRequest}
+      >
         <Input
           ref={ref}
-          classes="input-field"
+          classes={classes.input_field}
           placeholder="What do you want to watch?"
           withLabel={false}
           value={param}
           onChange={(e) => setSaram(e.target.value)}
         />
-        <Button className="search-bar" type="submit" text="Search" />
+        <Button className={classes.search_bar} type="submit" text="Search" />
       </form>
     </div>
   );

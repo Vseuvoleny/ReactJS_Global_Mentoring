@@ -1,17 +1,14 @@
 import React from "react";
-import PropTypes from "prop-types";
 import MovieForm from "../MovieForm/MovieForm";
-import "./EditModal.scss";
+import classes from "./EditModal.module.scss";
 
 const EditModal = () => {
   return (
-    <section className="edit-modal">
-      <span className="edit-modal__title">edit movie</span>
+    <section className={classes.edit_modal}>
+      <span className={classes.edit_modal__title}>edit movie</span>
       <MovieForm />
     </section>
   );
 };
-
-EditModal.propTypes = {};
 
 export default EditModal;

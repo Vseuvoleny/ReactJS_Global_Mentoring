@@ -1,19 +1,19 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Field } from "formik";
-import "./Option.scss";
+import classes from "./Option.module.scss";
 
 const Option = ({ options, name }) => {
   return (
-    <div className="option">
+    <div className={classes.option}>
       {options.map((option) => {
         return (
-          <label key={option.id} className="option-label">
+          <label key={option.id} className={classes.option_label}>
             <Field
               type="checkbox"
               name={name}
               value={option.title}
-              className="option-checkbox"
+              className={classes.option_checkbox}
             />
             {option.title}
           </label>

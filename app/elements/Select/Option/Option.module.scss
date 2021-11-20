@@ -7,14 +7,14 @@
     position: absolute;
     z-index: -1;
   }
-  &-label {
+  &_label {
     width: 100%;
     display: inline-block;
     padding: 6px 12px;
     cursor: pointer;
   }
 
-  &-checkbox:checked + &-label {
+  &_checkbox:checked + &_label {
     color: $color-corral;
   }
 }

@@ -1,7 +1,15 @@
+@import "../../styles/colors/colors.scss";
+
 .button {
   outline: none;
   border: 0;
   cursor: pointer;
   text-transform: uppercase;
   border-radius: 4px;
+}
+
+.filled {
+  background: rgba(96, 96, 96, 0.68);
+  padding: 11px 18px;
+  color: $color-corral;
 }

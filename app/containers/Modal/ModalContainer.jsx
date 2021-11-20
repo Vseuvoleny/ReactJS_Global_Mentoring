@@ -1,12 +1,12 @@
-import React, { useCallback, memo } from "react";
+import React, { memo } from "react";
 import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
-import ApplyModal from "../../Components/ApplyModal/ApplyModal";
-import EditModal from "../../Components/EditModal/EditModal";
-import DeleteModal from "../../Components/DeleteModal/DeleteModal";
-import { APPLY_MODAL, EDIT_MODAL, DELETE_MODAL } from "../../Store/ActionTypes";
-import "./ModalContainer.scss";
-import { setInactiveModal } from "../../Store/ActionCreator";
+import ApplyModal from "../../components/ApplyModal/ApplyModal";
+import EditModal from "../../components/EditModal/EditModal";
+import DeleteModal from "../../components/DeleteModal/DeleteModal";
+import { APPLY_MODAL, EDIT_MODAL, DELETE_MODAL } from "../../store/ActionTypes";
+import { setInactiveModal } from "../../store/ActionCreator";
+import classes from "./ModalContainer.module.scss";
 
 const ModalContainer = memo(({ modalStore }) => {
   const dispatch = useDispatch();
@@ -24,11 +24,11 @@ const ModalContainer = memo(({ modalStore }) => {
   };
 
   return (
-    <div className="modal">
-      <div className="modal__overlay"></div>
-      <div className="modal__container">
+    <div className={classes.modal}>
+      <div className={classes.modal__overlay}></div>
+      <div className={classes.modal__container}>
         <span
-          className="close_icon"
+          className={classes.close_icon}
           onClick={() => dispatch(setInactiveModal())}
         >
           &#x2715;

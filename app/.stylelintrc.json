@@ -1,4 +1,9 @@
 {
+  "extends": ["stylelint-config-standard", "stylelint-config-sass-guidelines"],
   "plugins": ["stylelint-order"],
-  "extends": ["stylelint-config-standard", "stylelint-config-sass-guidelines"]
+  "rules": {
+    "selector-class-pattern": null,
+    "scss/at-import-partial-extension-blacklist": null,
+    "max-nesting-depth": null
+  }
 }

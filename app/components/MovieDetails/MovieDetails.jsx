@@ -1,26 +1,28 @@
 import React, { memo } from "react";
 import PropTypes from "prop-types";
-import "./MovieDetails.module.scss";
+import classes from "./MovieDetails.module.scss";
 
 const MovieDetails = memo(({ img, title, rating, year, runtime, overview }) => {
   return (
-    <section className="movie-details">
-      <picture className="movie-details__image">
+    <section className={classes.movie_details}>
+      <picture className={classes.movie_details__image}>
         <img src={img} alt="" width={323} height={486} />
       </picture>
-      <section className="movie-details__description">
-        <div className="movie-details__title">
-          <span className="name">{title}</span>
-          <span className="rate">
+      <section className={classes.movie_details__description}>
+        <div className={classes.movie_details__title}>
+          <span className={classes.name}>{title}</span>
+          <span className={classes.rate}>
             <span>{rating}</span>
           </span>
         </div>
-        <div className="movie-details__genre">{"Action & Adventure"}</div>
-        <div className="movie-details__year">
-          <span className="year">{year}</span>
-          <span className="timeing">{runtime}</span>
+        <div className={classes.movie_details__genre}>
+          {"Action & Adventure"}
         </div>
-        <div className="movie-details__plot">{overview}</div>
+        <div className={classes.movie_details__year}>
+          <span className={classes.year}>{year}</span>
+          <span className={classes.timeing}>{runtime}</span>
+        </div>
+        <div className={classes.movie_details__plot}>{overview}</div>
       </section>
     </section>
   );

@@ -1,9 +1,9 @@
 import React from "react";
-import "./Title.module.scss";
+import classes from "./Title.module.scss";
 
 const Title = () => {
   return (
-    <h1 className="title">
+    <h1 className={classes.title}>
       <span>netflix</span>
       <span>roulette</span>
     </h1>

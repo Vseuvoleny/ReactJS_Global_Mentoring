@@ -1,6 +1,6 @@
 import React, { forwardRef, memo } from "react";
 import PropTypes from "prop-types";
-import "./Input.module.scss";
+import classess from "./Input.module.scss";
 
 const Input = forwardRef(
   (
@@ -18,9 +18,9 @@ const Input = forwardRef(
     const { errors, touched } = rest;
 
     return (
-      <div className={`input-container ${classes}`}>
+      <div className={`${classess.input_container} ${classes}`}>
         {withLabel && (
-          <label htmlFor={title} className={`label ${classes}`}>
+          <label htmlFor={title} className={`${classess.label} ${classes}`}>
             {title}
           </label>
         )}
@@ -29,12 +29,14 @@ const Input = forwardRef(
           type={type}
           id={title}
           value={value}
-          className={`input ${classes}`}
+          className={`${classess.input} ${classes}`}
           onChange={onChange}
           autoComplete="off"
         />
         {errors && touched.title && (
-          <div className={`error-message ${classes}`}>{errors.title}</div>
+          <div className={`${classess.error - message} ${classes}`}>
+            {errors.title}
+          </div>
         )}
       </div>
     );

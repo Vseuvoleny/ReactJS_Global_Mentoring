@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import RedTriangle from "../Icon/Icons/RedTriangle/RedTriangle";
 import Option from "./Option/Option";
-import "./Select.scss";
+import classes from "./Select.module.scss";
 
 // TODO
 // сделать закрытие через outsideclick
@@ -10,22 +10,23 @@ import "./Select.scss";
 const Select = ({ placeholder, label, value, options, name, ...rest }) => {
   const [isListOpen, setListOpen] = useState(false);
   const { errors, touched } = rest;
+
   return (
-    <div className="select-input">
-      <span className="label">{label}</span>
+    <div className={classes.select_input}>
+      <span className={classes.label}>{label}</span>
       <div
-        className="select-input__box"
+        className={classes.select_input__box}
         onClick={() => setListOpen(!isListOpen)}
       >
         {value.length > 0 ? value.join(", ") : placeholder}
-        <div className="expanded-list">
-          <span className="expanded-list__icon">
+        <div className={classes.expanded_list}>
+          <span className={classes.expanded_list__icon}>
             <RedTriangle viewBox="0 0 10 7" width="10" height="7" fill="none" />
           </span>
         </div>
       </div>
       {errors && touched.genres && (
-        <div className="error-message">{errors.genres}</div>
+        <div className={classes.error_message}>{errors.genres}</div>
       )}
       {isListOpen && <Option options={options} name={name} />}
     </div>

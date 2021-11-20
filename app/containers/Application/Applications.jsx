@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createPortal } from "react-dom";
 import Header from "../Header/Header";
-import ErrorBoundary from "../../Components/ErrorBoundary/ErrorBoundary";
+import ErrorBoundary from "../../components/ErrorBoundary/ErrorBoundary";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import { useSearchParams } from "react-router-dom";

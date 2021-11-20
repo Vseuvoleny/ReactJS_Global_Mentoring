@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { connect, useDispatch } from "react-redux";
 import PropTypes from "prop-types";
-import Nav from "../../Components/Nav/Nav";
-import MovieList from "../../Components/MovieList/MovieList";
-import Filters from "../../Components/Filters/Filters";
-import { asyncFetchFilms } from "../../Store/AsyncActions";
-import { useParams } from "react-router-dom";
+import Nav from "../../components/Nav/Nav";
+import MovieList from "../../components/MovieList/MovieList";
+import Filters from "../../components/Filters/Filters";
+import { asyncFetchFilms } from "../../store/AsyncActions";
 import classes from "./Main.module.scss";
 
 export const MainContext = React.createContext();
@@ -16,18 +15,14 @@ const Main = ({
   setIsMovieDetailsOpened,
   films,
   error,
-  searchParams,
   setSearchParams,
 }) => {
   const rDispatch = useDispatch();
   const [isFiltersOpen, setisFiltersOpen] = useState(false);
-  const { queryParams } = useParams();
-  const genres = searchParams.get("filter");
-  const sortBy = searchParams.get("sortBy");
 
-  useEffect(() => {
-    rDispatch(asyncFetchFilms({ queryParams, genres, sortBy }));
-  }, [queryParams, genres, sortBy]);
+  // useEffect(() => {
+  //   rDispatch(asyncFetchFilms());
+  // }, []);
 
   return (
     <MainContext.Provider
@@ -36,10 +31,9 @@ const Main = ({
       <main className={classes.main}>
         <div className={classes.hr}></div>
         <div className={classes.filters__container}>
-          <Nav genre={genres} setSearchParams={setSearchParams} />
+          <Nav setSearchParams={setSearchParams} />
           <Filters
             setSearchParams={setSearchParams}
-            sortBy={sortBy}
             isFiltersOpen={isFiltersOpen}
             setisFiltersOpen={setisFiltersOpen}
           />

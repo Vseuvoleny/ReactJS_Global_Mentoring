@@ -1,13 +1,13 @@
 import React from "react";
-import "./Buttons.module.scss";
+import classes from "./Buttons.module.scss";
 
 const Button = ({ clickHandler, type, className, text }) => {
-  const filled = type === "submit" || "button" ? "filled" : "outline";
-
   return (
-    <div className={className}>
+    <div>
       <button
-        className={`button ${className}__button ${filled}`}
+        className={`${classes.button} ${className}__button ${
+          type === "submit" || "button" ? classes.filled : classes.outline
+        }`}
         type={type}
         onClick={clickHandler}
       >

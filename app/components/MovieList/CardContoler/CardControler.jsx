@@ -1,7 +1,7 @@
 import React from "react";
-import Ovals from "../../../Elements/Icon/Icons/Ovals/Ovals";
+import Ovals from "../../../elements/Icon/Icons/Ovals/Ovals";
 import PropTypes from "prop-types";
-import DropDawn from "../../../Elements/DropDawn/DropDawn";
+import DropDawn from "../../../elements/DropDawn/DropDawn";
 
 const CardControler = ({ isDropDawnOpen, setDropDawnOpen, dispatch }) => {
   if (!isDropDawnOpen) {

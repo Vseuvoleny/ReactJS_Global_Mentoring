@@ -3,8 +3,8 @@ import { useDispatch } from "react-redux";
 import CloseIcon from "../Icon/Icons/CloseIcon/CloseIcon";
 import PropTypes from "prop-types";
 import useOutsideClick from "../../utils/hooks/useOutsideClick";
-import { DELETE_MODAL, EDIT_MODAL } from "../../Store/ActionTypes";
-import "./DropDawn.scss";
+import { DELETE_MODAL, EDIT_MODAL } from "../../store/ActionTypes";
+import classes from "./DropDawn.module.scss";
 
 // TODO нужно сделать dropdawn универсальным
 const DropDawn = ({ setDropDawnOpen }) => {
@@ -27,17 +27,17 @@ const DropDawn = ({ setDropDawnOpen }) => {
   useOutsideClick(outSideClick);
 
   return (
-    <div className="dropdawn__container" ref={ref}>
+    <div className={classes.dropdawn__container} ref={ref}>
       <CloseIcon
         width="12"
         height="13"
         viewBox="0 0 12 13"
-        classes={"close_icon"}
+        classes={classes.close_icon}
         onClick={outSideClick}
         ref={svgRef}
       />
       <div
-        className="control"
+        className={classes.control}
         onClick={() => {
           dispatch({ type: EDIT_MODAL });
         }}
@@ -45,7 +45,7 @@ const DropDawn = ({ setDropDawnOpen }) => {
         Edit
       </div>
       <div
-        className="control"
+        className={classes.control}
         onClick={() => {
           dispatch({ type: DELETE_MODAL });
         }}

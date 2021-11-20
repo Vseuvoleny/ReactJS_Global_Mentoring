@@ -1,7 +1,7 @@
 import React from "react";
-import Input from "../../Elements/Input/Input";
-import Select from "../../Elements/Select/Select";
-import TextArea from "../../Elements/TextArea/TextArea";
+import Input from "../../elements/Input/Input";
+import Select from "../../elements/Select/Select";
+import TextArea from "../../elements/TextArea/TextArea";
 
 const FormikControl = ({ control, ...rest }) => {
   switch (control) {

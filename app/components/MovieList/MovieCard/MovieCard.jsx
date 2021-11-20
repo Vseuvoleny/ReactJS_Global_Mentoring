@@ -1,25 +1,22 @@
-import React, { useState, useContext, memo } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState, useContext } from "react";
 import PropTypes from "prop-types";
 import CardControler from "../CardContoler/CardControler";
-import { MainContext } from "../../../Containers/Main/Main";
-import { asyncFetchMovie } from "../../../Store/AsyncActions";
-import "./MovieCard.scss";
+import { MainContext } from "../../../containers/Main/Main";
+import classes from "./MovieCard.module.scss";
 
 const MovieCard = ({ image, name, date, type, id, setSearchParams }) => {
   const [isDropDawnOpen, setDropDawnOpen] = useState(false);
   const context = useContext(MainContext);
-  const rdispatch = useDispatch();
   const { state, setMovieListOpen, dispatch } = context;
 
   return (
     <div
-      className="card__item"
+      className={classes.card__item}
       onClick={() => {
         setSearchParams({ movieId: id });
       }}
     >
-      <picture className="card__image">
+      <picture className={classes.card__image}>
         <CardControler
           isDropDawnOpen={isDropDawnOpen}
           setDropDawnOpen={setDropDawnOpen}
@@ -28,12 +25,12 @@ const MovieCard = ({ image, name, date, type, id, setSearchParams }) => {
         />
         <img src={image} alt={name} />
       </picture>
-      <div className="card__description">
-        <div className="card__film">
-          <span className="film-name">{name}</span>
-          <span className="film-date">{date}</span>
+      <div className={classes.card__description}>
+        <div className={classes.card__film}>
+          <span className={classes.film_name}>{name}</span>
+          <span className={classes.film_date}>{date}</span>
         </div>
-        <span className="card__film-type">{type}</span>
+        <span className={classes.card__film_type}>{type}</span>
       </div>
     </div>
   );

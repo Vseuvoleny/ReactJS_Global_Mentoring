@@ -6,8 +6,8 @@ import Button from "../../elements/Button/Button";
 import Title from "../../elements/Title/Title";
 import SearchIcon from "../../elements/Icon/Icons/SearchIcon/SearchIcon";
 import MovieDetails from "../../components/MovieDetails/MovieDetails";
-import { setApplyModal } from "../../Store/ActionCreator";
-import { asyncFetchMovie } from "../../Store/AsyncActions";
+import { setApplyModal } from "../../store/ActionCreator";
+import { asyncFetchMovie } from "../../store/AsyncActions";
 import classes from "./Header.module.scss";
 
 const Header = ({
@@ -42,7 +42,7 @@ const Header = ({
             />
           ) : (
             <Button
-              type={"button"}
+              type="button"
               clickHandler={() => {
                 dispatch(setApplyModal());
               }}

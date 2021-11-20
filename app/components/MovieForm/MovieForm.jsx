@@ -3,7 +3,7 @@ import { Formik, Form } from "formik";
 import Button from "../../Elements/Button/Button";
 import * as Yup from "yup";
 import FormikControl from "../FormikControl/FormikControl";
-import "./MovieForm.scss";
+import classes from "./MovieForm.module.scss";
 
 const modalSchema = Yup.object().shape({
   title: Yup.string().required("Заполните поле описания"),
@@ -55,8 +55,8 @@ const MovieForm = memo(() => {
         // TODO передалать верстку инпутов
         return (
           <Form>
-            <div className="form-container__inputs">
-              <div className="right">
+            <div className={classes.form_container__inputs}>
+              <div className={classes.right}>
                 <FormikControl
                   name="title"
                   control="input"
@@ -85,7 +85,7 @@ const MovieForm = memo(() => {
                   {...rest}
                 />
               </div>
-              <div className="left">
+              <div className={classes.left}>
                 <FormikControl
                   name="release_date"
                   control="input"
@@ -125,9 +125,17 @@ const MovieForm = memo(() => {
               onChange={handleChange}
               {...rest}
             />
-            <div className="buttons">
-              <Button className="submit-form" type="submit" text="submit" />
-              <Button className="reset-form" type="reset" text="reset" />
+            <div className={classes.buttons}>
+              <Button
+                className={classes.submit_form}
+                type="submit"
+                text="submit"
+              />
+              <Button
+                className={classes.reset_form}
+                type="reset"
+                text="reset"
+              />
             </div>
           </Form>
         );

@@ -1,4 +1,4 @@
-.search-bar {
+.search_bar {
   &__title {
     font-size: 40px;
     font-weight: 300;
@@ -7,16 +7,16 @@
     text-transform: uppercase;
   }
 
-  &__search-container {
+  &__search_container {
     display: flex;
     margin-top: 40px;
   }
 
-  .input-container.input-field {
+  .input_container.input_field {
     width: 80%;
     margin-right: 14px;
   }
-  .input-field {
+  .input_field {
     background: rgba(50, 50, 50, 0.8);
     border: 0;
     border-radius: 4px;
