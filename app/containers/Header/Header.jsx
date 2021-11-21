@@ -21,6 +21,7 @@ const Header = ({
   const ref = useRef();
   const router = useRouter();
   const { movieId } = router.query;
+
   useEffect(() => {
     dispatch(asyncFetchMovie(movieId));
   }, [movieId, dispatch]);
@@ -53,18 +54,7 @@ const Header = ({
           )}
         </div>
 
-        {film ? (
-          <MovieDetails
-            img={film.poster_path}
-            title={film.title}
-            rating={film.vote_average}
-            year={film.release_date.split("-")[0]}
-            runtime={film.runtime}
-            overview={film.overview}
-          />
-        ) : (
-          <SearchBar ref={ref} />
-        )}
+        {film ? <MovieDetails film={film} /> : <SearchBar ref={ref} />}
       </div>
     </header>
   );

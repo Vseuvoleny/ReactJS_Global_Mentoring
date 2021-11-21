@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { useRouter } from "next/router";
-import { connect, useDispatch } from "react-redux";
+import React, { useState } from "react";
+import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Nav from "../../components/Nav/Nav";
 import MovieList from "../../components/MovieList/MovieList";
 import Filters from "../../components/Filters/Filters";
-import { asyncFetchFilms } from "../../store/AsyncActions";
 import classes from "./Main.module.scss";
 
 export const MainContext = React.createContext();
@@ -18,14 +16,7 @@ const Main = ({
   error,
   setSearchParams,
 }) => {
-  const reduxDispatch = useDispatch();
   const [isFiltersOpen, setisFiltersOpen] = useState(false);
-  const router = useRouter();
-  const query = router.query;
-
-  useEffect(() => {
-    reduxDispatch(asyncFetchFilms(query));
-  }, [query]);
 
   return (
     <MainContext.Provider
@@ -59,7 +50,6 @@ Main.propTypes = {
 
 const mapStateToProps = ({ filmsStore }) => {
   return {
-    films: filmsStore.films,
     sortType: filmsStore.sortType,
     error: filmsStore.error,
   };
