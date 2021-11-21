@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import { connect, useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 import Nav from "../../components/Nav/Nav";
@@ -17,12 +18,14 @@ const Main = ({
   error,
   setSearchParams,
 }) => {
-  const rDispatch = useDispatch();
+  const reduxDispatch = useDispatch();
   const [isFiltersOpen, setisFiltersOpen] = useState(false);
+  const router = useRouter();
+  const query = router.query;
 
-  // useEffect(() => {
-  //   rDispatch(asyncFetchFilms());
-  // }, []);
+  useEffect(() => {
+    reduxDispatch(asyncFetchFilms(query));
+  }, [query]);
 
   return (
     <MainContext.Provider

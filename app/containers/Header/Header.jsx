@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
+import { useRouter } from "next/router";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import Button from "../../elements/Button/Button";
 import Title from "../../elements/Title/Title";
@@ -13,13 +14,13 @@ import classes from "./Header.module.scss";
 const Header = ({
   isMovieDetailsOpened,
   setIsMovieDetailsOpened,
-  movieId,
   setSearchParams,
 }) => {
   const { filmsStore } = useSelector(({ filmsStore }) => ({ filmsStore }));
   const dispatch = useDispatch();
   const ref = useRef();
-
+  const router = useRouter();
+  const { movieId } = router.query;
   useEffect(() => {
     dispatch(asyncFetchMovie(movieId));
   }, [movieId, dispatch]);

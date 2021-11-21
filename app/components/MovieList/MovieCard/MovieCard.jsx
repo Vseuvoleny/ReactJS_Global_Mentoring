@@ -1,19 +1,24 @@
 import React, { useState, useContext } from "react";
 import PropTypes from "prop-types";
+import { useRouter } from "next/router";
 import CardControler from "../CardContoler/CardControler";
 import { MainContext } from "../../../containers/Main/Main";
 import classes from "./MovieCard.module.scss";
 
-const MovieCard = ({ image, name, date, type, id, setSearchParams }) => {
+const MovieCard = ({ image, name, date, type, id }) => {
   const [isDropDawnOpen, setDropDawnOpen] = useState(false);
   const context = useContext(MainContext);
   const { state, setMovieListOpen, dispatch } = context;
+  const router = useRouter();
 
   return (
     <div
       className={classes.card__item}
       onClick={() => {
-        setSearchParams({ movieId: id });
+        router.push({
+          pathname: router.pathname,
+          query: { ...router.query, movieId: id },
+        });
       }}
     >
       <picture className={classes.card__image}>

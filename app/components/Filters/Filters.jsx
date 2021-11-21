@@ -1,13 +1,9 @@
 import React from "react";
 import RedTriangle from "../../elements/Icon/Icons/RedTriangle/RedTriangle";
+import Router from "next/router";
 import classes from "./Filters.module.scss";
 
-const Filters = ({
-  isFiltersOpen,
-  setisFiltersOpen,
-  sortBy,
-  setSearchParams,
-}) => {
+const Filters = ({ isFiltersOpen, setisFiltersOpen, sortBy }) => {
   return (
     <div className={classes.filter}>
       <span className={classes.filter__status}>sort by</span>
@@ -22,19 +18,31 @@ const Filters = ({
         <div className={classes.filter__expanded_list}>
           <div
             className={classes.filter__option}
-            onClick={() => setSearchParams({ sortBy: "release_date" })}
+            onClick={() =>
+              Router.push({
+                query: { ...Router.query, sortBy: "release_date" },
+              })
+            }
           >
             Release date
           </div>
           <div
             className={classes.filter__option}
-            onClick={() => setSearchParams({ sortBy: "genre" })}
+            onClick={() =>
+              Router.push({
+                query: { ...Router.query, sortBy: "release_date" },
+              })
+            }
           >
             Genre
           </div>
           <div
             className={classes.filter__option}
-            onClick={() => setSearchParams({ sortBy: "rating" })}
+            onClick={() =>
+              Router.push({
+                query: { ...Router.query, sortBy: "release_date" },
+              })
+            }
           >
             Rating
           </div>

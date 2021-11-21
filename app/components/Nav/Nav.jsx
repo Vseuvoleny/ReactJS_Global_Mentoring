@@ -5,14 +5,14 @@ import { NavLink } from "./NavLink/NavLink";
 import classes from "./Nav.module.scss";
 
 const genres = [
-  { title: "All", id: 1 },
-  { title: "Documentary", id: 2 },
-  { title: "Comedy", id: 3 },
-  { title: "Horror", id: 4 },
-  { title: "Crime", id: 5 },
+  { title: "All", id: 1, path: "" },
+  { title: "Documentary", id: 2, path: "documentary" },
+  { title: "Comedy", id: 3, path: "comedy" },
+  { title: "Horror", id: 4, path: "horror" },
+  { title: "Crime", id: 5, path: "crime" },
 ];
 
-const Nav = ({ genre, setSearchParams }) => {
+const Nav = ({ genre }) => {
   const [activeLink, setLink] = useState(genre);
   const dispatch = useDispatch();
 
@@ -25,9 +25,6 @@ const Nav = ({ genre, setSearchParams }) => {
             title={title}
             key={g.id}
             clickHandler={() => {
-              setSearchParams(
-                title === "all" ? {} : { filter: title.toLowerCase() }
-              );
               setLink(title);
               dispatch(setGenres(title));
             }}
