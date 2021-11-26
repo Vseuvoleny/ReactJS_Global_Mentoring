@@ -1,5 +1,5 @@
 import React, { forwardRef, useState, useCallback } from "react";
-import Button from "../../elements/Button/Button";
+import Button from "../../elements/Button/Button.tsx";
 import Input from "../../elements/Input/Input";
 import classes from "./SearchBar.module.scss";
 
