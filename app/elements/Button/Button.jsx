@@ -2,8 +2,8 @@ import React from "react";
 import cn from "classnames";
 import classes from "./Buttons.module.scss";
 
-const Button = ({ clickHandler, type, className, text }) => {
-  const cls = cn({
+const Button = ({ clickHandler, type, text }) => {
+  const cls = cn(classes.button, {
     button: type === "button",
     reset: type === "reset",
     submit: type === "submit",
@@ -11,11 +11,7 @@ const Button = ({ clickHandler, type, className, text }) => {
 
   return (
     <div>
-      <button
-        className={`${classes.button} ${cls}`}
-        type={type}
-        onClick={clickHandler}
-      >
+      <button className={cls} type={type} onClick={clickHandler}>
         {text}
       </button>
     </div>
