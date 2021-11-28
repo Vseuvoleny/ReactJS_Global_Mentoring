@@ -126,16 +126,8 @@ const MovieForm = memo(() => {
               {...rest}
             />
             <div className={classes.buttons}>
-              <Button
-                className={classes.submit_form}
-                type="submit"
-                text="submit"
-              />
-              <Button
-                className={classes.reset_form}
-                type="reset"
-                text="reset"
-              />
+              <Button type="submit" text="submit" />
+              <Button type="reset" text="reset" />
             </div>
           </Form>
         );

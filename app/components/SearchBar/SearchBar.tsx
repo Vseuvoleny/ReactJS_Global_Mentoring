@@ -1,14 +1,13 @@
 import React, { forwardRef, useState, useCallback } from "react";
-import Button from "../../elements/Button/Button.tsx";
+import Button from "../../elements/Button/Button";
 import Input from "../../elements/Input/Input";
 import classes from "./SearchBar.module.scss";
 
-const SearchBar = forwardRef((props, ref) => {
+const SearchBar = forwardRef((_, ref) => {
   const [param, setSaram] = useState();
 
   const showFilms = async (e) => {
     e.preventDefault();
-    navigate(param);
   };
 
   const filmRequest = useCallback(showFilms, [param]);
@@ -28,7 +27,7 @@ const SearchBar = forwardRef((props, ref) => {
           value={param}
           onChange={(e) => setSaram(e.target.value)}
         />
-        <Button className={classes.search_bar} type="submit" text="Search" />
+        <Button type="submit" text="Search" />
       </form>
     </div>
   );

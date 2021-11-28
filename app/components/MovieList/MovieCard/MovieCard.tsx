@@ -1,14 +1,12 @@
-import React, { useState, useContext } from "react";
+import React, { useState, FC } from "react";
 import PropTypes from "prop-types";
 import { useRouter } from "next/router";
 import CardControler from "../CardContoler/CardControler";
-import { MainContext } from "../../../containers/Main/Main";
 import classes from "./MovieCard.module.scss";
+import { IMovieCard } from "./types";
 
-const MovieCard = ({ image, name, date, type, id }) => {
+const MovieCard: FC<IMovieCard> = ({ image, name, date, type, id }) => {
   const [isDropDawnOpen, setDropDawnOpen] = useState(false);
-  const context = useContext(MainContext);
-  const { state, setMovieListOpen, dispatch } = context;
   const router = useRouter();
 
   return (
@@ -25,8 +23,6 @@ const MovieCard = ({ image, name, date, type, id }) => {
         <CardControler
           isDropDawnOpen={isDropDawnOpen}
           setDropDawnOpen={setDropDawnOpen}
-          state={state}
-          dispatch={dispatch}
         />
         <img src={image} alt={name} />
       </picture>
@@ -39,14 +35,6 @@ const MovieCard = ({ image, name, date, type, id }) => {
       </div>
     </div>
   );
-};
-
-MovieCard.propTypes = {
-  image: PropTypes.string,
-  name: PropTypes.string,
-  date: PropTypes.string,
-  type: PropTypes.string,
-  id: PropTypes.number,
 };
 
 export default MovieCard;

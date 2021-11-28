@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import PropTypes from "prop-types";
 import Nav from "../../components/Nav/Nav";
 import MovieList from "../../components/MovieList/MovieList";
 import Filters from "../../components/Filters/Filters";
 import classes from "./Main.module.scss";
 
-export const MainContext = React.createContext();
+export const MainContext = React.createContext(null);
 
 const Main = ({
   state,
@@ -42,15 +41,8 @@ const Main = ({
   );
 };
 
-Main.propTypes = {
-  state: PropTypes.string,
-  dispatch: PropTypes.func,
-  setIsMovieDetailsOpened: PropTypes.func,
-};
-
 const mapStateToProps = ({ filmsStore }) => {
   return {
-    sortType: filmsStore.sortType,
     error: filmsStore.error,
   };
 };

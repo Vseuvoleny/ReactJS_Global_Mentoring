@@ -1,13 +1,20 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
+import React, { FC, useState } from "react";
 import RedTriangle from "../Icon/Icons/RedTriangle/RedTriangle";
 import Option from "./Option/Option";
 import classes from "./Select.module.scss";
+import { ISelect } from "./types";
 
 // TODO
 // сделать закрытие через outsideclick
 
-const Select = ({ placeholder, label, value, options, name, ...rest }) => {
+const Select: FC<ISelect> = ({
+  placeholder,
+  label,
+  value,
+  options,
+  name,
+  ...rest
+}) => {
   const [isListOpen, setListOpen] = useState(false);
   const { errors, touched } = rest;
 
@@ -31,12 +38,6 @@ const Select = ({ placeholder, label, value, options, name, ...rest }) => {
       {isListOpen && <Option options={options} name={name} />}
     </div>
   );
-};
-
-Select.propTypes = {
-  placeholder: PropTypes.string,
-  label: PropTypes.string,
-  onClick: PropTypes.func,
 };
 
 export default Select;

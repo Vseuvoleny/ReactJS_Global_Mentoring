@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, FC } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createPortal } from "react-dom";
 import Header from "../Header/Header";
@@ -7,8 +7,12 @@ import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import { useSearchParams } from "react-router-dom";
 import ModalContainer from "../Modal/ModalContainer";
+import { IApplications } from "./types";
 
-const Application = ({ setIsMovieDetailsOpened, isMovieDetailsOpened }) => {
+const Application: FC<IApplications> = ({
+  setIsMovieDetailsOpened,
+  isMovieDetailsOpened,
+}) => {
   const dispatch = useDispatch();
   const state = useSelector(({ filmsStore, modalStore }) => ({
     filmsStore,

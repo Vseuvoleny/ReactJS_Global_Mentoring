@@ -1,9 +1,11 @@
-import React from "react";
+import React, { FC } from "react";
 import RedTriangle from "../../elements/Icon/Icons/RedTriangle/RedTriangle";
-import Router from "next/router";
+import { useRouter } from "next/router";
 import classes from "./Filters.module.scss";
+import { IFilters } from "./types";
 
-const Filters = ({ isFiltersOpen, setisFiltersOpen, sortBy }) => {
+const Filters: FC<IFilters> = ({ isFiltersOpen, setisFiltersOpen, sortBy }) => {
+  const router = useRouter();
   return (
     <div className={classes.filter}>
       <span className={classes.filter__status}>sort by</span>
@@ -19,8 +21,8 @@ const Filters = ({ isFiltersOpen, setisFiltersOpen, sortBy }) => {
           <div
             className={classes.filter__option}
             onClick={() =>
-              Router.push({
-                query: { ...Router.query, sortBy: "release_date" },
+              router.push({
+                query: { ...router.query, sortBy: "release_date" },
               })
             }
           >
@@ -29,8 +31,8 @@ const Filters = ({ isFiltersOpen, setisFiltersOpen, sortBy }) => {
           <div
             className={classes.filter__option}
             onClick={() =>
-              Router.push({
-                query: { ...Router.query, sortBy: "release_date" },
+              router.push({
+                query: { ...router.query, sortBy: "genre" },
               })
             }
           >
@@ -39,8 +41,8 @@ const Filters = ({ isFiltersOpen, setisFiltersOpen, sortBy }) => {
           <div
             className={classes.filter__option}
             onClick={() =>
-              Router.push({
-                query: { ...Router.query, sortBy: "release_date" },
+              router.push({
+                query: { ...router.query, sortBy: "rating" },
               })
             }
           >

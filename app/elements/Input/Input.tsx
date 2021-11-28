@@ -1,5 +1,4 @@
 import React, { forwardRef, memo } from "react";
-import PropTypes from "prop-types";
 import classess from "./Input.module.scss";
 
 const Input = forwardRef(
@@ -42,14 +41,5 @@ const Input = forwardRef(
     );
   }
 );
-
-Input.propTypes = {
-  classes: PropTypes.string,
-  title: PropTypes.string,
-  type: PropTypes.string,
-  withLabel: PropTypes.bool,
-  value: PropTypes.string,
-  onChange: PropTypes.func,
-};
 
 export default memo(Input);

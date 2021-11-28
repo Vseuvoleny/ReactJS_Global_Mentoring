@@ -1,6 +1,5 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, FC } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import PropTypes from "prop-types";
 import { useRouter } from "next/router";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import Button from "../../elements/Button/Button";
@@ -10,12 +9,9 @@ import MovieDetails from "../../components/MovieDetails/MovieDetails";
 import { setApplyModal } from "../../store/ActionCreator";
 import { asyncFetchMovie } from "../../store/AsyncActions";
 import classes from "./Header.module.scss";
+import { IHeader } from "./types";
 
-const Header = ({
-  isMovieDetailsOpened,
-  setIsMovieDetailsOpened,
-  setSearchParams,
-}) => {
+const Header: FC<IHeader> = ({ setSearchParams }) => {
   const { filmsStore } = useSelector(({ filmsStore }) => ({ filmsStore }));
   const dispatch = useDispatch();
   const ref = useRef();
@@ -36,6 +32,8 @@ const Header = ({
           {movieId ? (
             <SearchIcon
               width="30"
+              as
+              const
               height="30"
               viewBox="0 0 30 30"
               onClick={() => {
@@ -48,8 +46,7 @@ const Header = ({
               clickHandler={() => {
                 dispatch(setApplyModal());
               }}
-              className={classes.add_movie}
-              text={"+ add movie"}
+              text="+ add movie"
             />
           )}
         </div>
@@ -58,10 +55,6 @@ const Header = ({
       </div>
     </header>
   );
-};
-
-Header.propTypes = {
-  isMovieDetailsOpened: PropTypes.bool,
 };
 
 export default Header;

@@ -9,18 +9,14 @@ const DeleteModal = memo(() => {
   };
 
   return (
-    <Formik onSubmit={onSubmit}>
+    <Formik onSubmit={onSubmit} initialValues={{}}>
       {() => {
         <form className={classes.delete_modal}>
           <span className={classes.delete_modal__title}>Delete movie</span>
           <span className={classes.delete_modal__request}>
             Are you sure you want to delete this movie?
           </span>
-          <Button
-            className={classes.delete_modal}
-            type="submit"
-            text="confirm"
-          />
+          <Button type="submit" text="confirm" />
         </form>;
       }}
     </Formik>

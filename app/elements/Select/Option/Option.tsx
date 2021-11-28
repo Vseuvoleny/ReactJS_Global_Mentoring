@@ -1,9 +1,9 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { FC } from "react";
 import { Field } from "formik";
 import classes from "./Option.module.scss";
+import { IOption } from "./types";
 
-const Option = ({ options, name }) => {
+const Option: FC<IOption> = ({ options, name }) => {
   return (
     <div className={classes.option}>
       {options.map((option) => {
@@ -21,11 +21,6 @@ const Option = ({ options, name }) => {
       })}
     </div>
   );
-};
-
-Option.propTypes = {
-  options: PropTypes.array,
-  name: PropTypes.string,
 };
 
 export default Option;

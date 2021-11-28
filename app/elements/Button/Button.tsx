@@ -1,8 +1,9 @@
-import React from "react";
+import React, { FC } from "react";
 import cn from "classnames";
 import classes from "./Buttons.module.scss";
+import { IButton } from "./types";
 
-const Button = ({ clickHandler, type, text }) => {
+const Button: FC<IButton> = ({ clickHandler, type, text }) => {
   const cls = cn(classes.button, {
     button: type === "button",
     reset: type === "reset",

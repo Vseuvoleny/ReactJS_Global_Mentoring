@@ -1,5 +1,4 @@
 import React, { forwardRef } from "react";
-import PropTypes from "prop-types";
 
 const defaultViewBox = "0 0 24 24";
 const getSize = (viewBox) => {
@@ -34,9 +33,5 @@ const Icon = forwardRef((props, ref) => {
     </svg>
   );
 });
-
-Icon.propTypes = {
-  children: PropTypes.node,
-};
 
 export default Icon;

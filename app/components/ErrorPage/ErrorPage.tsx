@@ -1,5 +1,5 @@
-import React from "react";
+import React, { memo } from "react";
 
-export const ErrorPage = () => {
+export const ErrorPage = memo(() => {
   return <div>ErrorPage</div>;
-};
+});

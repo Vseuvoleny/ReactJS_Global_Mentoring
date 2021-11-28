@@ -1,9 +1,9 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { FC } from "react";
+import { IFilm } from "../../types/types";
 import MovieCard from "./MovieCard/MovieCard";
 import classes from "./MovieList.module.scss";
 
-const MovieList = ({ films, setSearchParams }) => {
+const MovieList: FC<IFilm[]> = ({ films }) => {
   return (
     <section className={classes.cards__container}>
       <span className={classes.cards__counter}>
@@ -12,10 +12,9 @@ const MovieList = ({ films, setSearchParams }) => {
       <div className={classes.cards__list}>
         {films.map((f) => (
           <MovieCard
-            setSearchParams={setSearchParams}
+            key={f.id}
             image={f.poster_path}
             name={f.title}
-            key={f.id}
             type={f.genres.join(", ")}
             date={f.release_date.split("-")[0]}
             id={f.id}
@@ -24,16 +23,6 @@ const MovieList = ({ films, setSearchParams }) => {
       </div>
     </section>
   );
-};
-
-MovieList.propTypes = {
-  films: PropTypes.shape({
-    image: PropTypes.string,
-    name: PropTypes.string,
-    date: PropTypes.string,
-    type: PropTypes.string,
-    id: PropTypes.number,
-  }),
 };
 
 export default MovieList;

@@ -1,13 +1,13 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { FC } from "react";
+import { IErrorBoundary } from "./types";
 
-const ErrorBoundary = ({ children }) => {
+const ErrorBoundary: FC<IErrorBoundary> = ({ children }) => {
   let hasError = false;
 
   const style = {
     textAlign: "center",
     marginTop: "20px",
-  };
+  } as const;
 
   const Fallback = () => (
     <h2 style={style}>Something went wront. Please try to reload page.</h2>
@@ -16,10 +16,6 @@ const ErrorBoundary = ({ children }) => {
     return <Fallback />;
   }
   return <>{children}</>;
-};
-
-ErrorBoundary.propTypes = {
-  children: PropTypes.node,
 };
 
 export default ErrorBoundary;
