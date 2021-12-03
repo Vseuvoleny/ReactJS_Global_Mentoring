@@ -1,0 +1,29 @@
+.delete_modal {
+  display: flex;
+  flex-direction: column;
+  &__title {
+    text-transform: uppercase;
+    display: inline-block;
+    font-weight: 300;
+    font-size: 40px;
+    line-height: 49px;
+    letter-spacing: 1px;
+    margin-bottom: 37px;
+  }
+  &__request {
+    font-size: 20px;
+    line-height: 24px;
+    margin-bottom: 52px;
+    display: inline-block;
+  }
+  &__button {
+    background: #f65261;
+    width: 180px;
+    height: 57px;
+    align-self: flex-end;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    color: #ffffff;
+  }
+}

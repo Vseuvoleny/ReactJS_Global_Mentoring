@@ -1,0 +1,34 @@
+@import "../../styles/colors/colors.scss";
+
+.button {
+  outline: none;
+  border: 0;
+  cursor: pointer;
+  text-transform: uppercase;
+  border-radius: 4px;
+}
+
+.button {
+  background: rgba(96, 96, 96, 0.68);
+  padding: 11px 18px;
+  color: $color-corral;
+}
+
+.submit {
+  background: $color-corral;
+  border-radius: 4px;
+  padding: 16px 48px;
+  font-size: 20px;
+  line-height: 24px;
+  color: $color-white;
+}
+
+.reset {
+  border: 1.5px solid $color-corral;
+  border-radius: 4px;
+  background: $color-black;
+  padding: 16px 48px;
+  font-size: 20px;
+  line-height: 24px;
+  color: $color-corral;
+}

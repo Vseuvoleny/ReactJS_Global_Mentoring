@@ -1,0 +1,42 @@
+@import "../../styles/colors/colors.scss";
+
+.textarea_container {
+  margin-bottom: 30px;
+  &__title {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: $color-corral;
+    opacity: 0.8;
+  }
+  &__textarea {
+    margin-top: 13px;
+    display: block;
+    resize: none;
+    outline: none;
+    border: 0;
+    background: rgba(50, 50, 50, 0.948044);
+    mix-blend-mode: normal;
+    opacity: 0.8;
+    border-radius: 4px;
+    padding: 18px;
+    width: 100%;
+    height: 197px;
+    color: $color-white;
+    font-size: 20px;
+    line-height: 24px;
+    caret-color: $color-white;
+    &::placeholder {
+      font-size: 20px;
+      line-height: 24px;
+      color: $color-white;
+      opacity: 0.3;
+    }
+  }
+  .error_message {
+    padding-top: 4px;
+    color: $color-corral;
+  }
+}
